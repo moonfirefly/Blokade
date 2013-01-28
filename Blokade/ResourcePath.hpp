@@ -26,8 +26,12 @@
 #ifndef __Blokade_ResourcePath_hpp
 #define __Blokade_ResourcePath_hpp
 
-#ifdef BLOKADE_PLATFORM_OSX
-#include "OSXResourcePath.hpp"
+#if defined( BLOKADE_PLATFORM_OSX )
+	#include "OSXResourcePath.hpp"
+#elif defined( BLOKADE_PLATFORM_WINDOWS )
+	#include "Windows/WindowsResourcePath.hpp"
+#else
+	#error "Unsupported Platform"
 #endif
 
 #endif /* defined(__Blokade_ResourcePath_hpp) */

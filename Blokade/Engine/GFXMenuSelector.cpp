@@ -61,16 +61,16 @@ bool GFXMenuSelector::init(const char* id_pLabel, const int id_x, const int id_y
         }
         m_init = true;
     }
-    
+
     if (id_pLabel != NULL) {
         // Label provided, set and compute offset from left side for it to be centered
         m_fontLabel.init(id_pLabel);
     }
-    
+
     m_pValues = it_pValues;
     m_tag = id_tag;
     m_isSelected = false;
-    
+
     if ((*it_pValues).size() > 0) {
         setSelectedIndex(0);
     }
@@ -83,7 +83,7 @@ bool GFXMenuSelector::init(const char* id_pLabel, const int id_x, const int id_y
     normalRect.width = BUTTON_WIDTH;
     normalRect.height = BUTTON_HEIGHT;
     m_normalSprite.setTextureRect(normalRect);
-    
+
     // Setup sprite for button image when it is selected
     m_selectedSprite = sf::Sprite(m_buttonsSheet);
     sf::IntRect selectedRect;
@@ -92,10 +92,10 @@ bool GFXMenuSelector::init(const char* id_pLabel, const int id_x, const int id_y
     selectedRect.width = BUTTON_WIDTH;
     selectedRect.height = BUTTON_HEIGHT;
     m_selectedSprite.setTextureRect(selectedRect);
-    
+
     // Set position on screen
     setPosition(id_x, id_y);
-    
+
     return true;
 }
 
@@ -181,7 +181,7 @@ const GFXMenuItem::TYPE GFXMenuSelector::getType() {
 //
 //----------------------------------------------------------------------*
 void GFXMenuSelector::selectNextValue() {
-    if ((m_selectedValueIndex + 1) < m_pValues->size()) {
+    if ((m_selectedValueIndex + 1) < static_cast<int>(m_pValues->size())) {
         setSelectedIndex(m_selectedValueIndex + 1);
     }
     else {
@@ -234,7 +234,7 @@ void GFXMenuSelector::setSelectedValue(const GFXBean* id_pValue) {
 //
 //----------------------------------------------------------------------*
 void GFXMenuSelector::setSelectedIndex(const int id_index) {
-    if (id_index >= 0 && id_index < m_pValues->size()) {
+    if (id_index >= 0 && id_index < static_cast<int>(m_pValues->size())) {
         m_selectedValueIndex = id_index;
         m_fontValue.init((m_pValues->at(id_index)).getLabel());
         m_fontValue.setPosition(m_x + BUTTON_WIDTH - LABEL_X_OFFSET - m_fontValue.getCharsOutputLength(),

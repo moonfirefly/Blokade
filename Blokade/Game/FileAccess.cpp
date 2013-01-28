@@ -25,6 +25,10 @@
 
 #include "FileAccess.hpp"
 
+#if defined( BLOKADE_PLATFORM_WINDOWS )
+	#include <windows.h>
+#endif
+
 //&---------------------------------------------------------------------*
 //&      Method  readData
 //&---------------------------------------------------------------------*
@@ -60,9 +64,16 @@ std::string FileAccess::getSettingsFilePath() {
             filePath = moonPath + "/blokade.dat";
         }
         else {
-            if (mkdir(moonPath.c_str(), S_IRWXU | S_IRWXG) == 0) {
-                filePath = moonPath + "/blokade.dat";
-            }
+			#if defined( BLOKADE_PLATFORM_OSX )
+				if (mkdir(moonPath.c_str(), S_IRWXU | S_IRWXG) == 0) {
+					filePath = moonPath + "/blokade.dat";
+				}
+            #elif defined( BLOCKADE_PLATFORM_WINDOWS )
+				if (CreateDirectory(OutputFolder.c_str(), NULL) ||
+					ERROR_ALREADY_EXISTS == GetLastError()) {
+					filePath = moonPath + "/blockade.dat";
+				}
+            #endif
         }
     }
     return filePath;

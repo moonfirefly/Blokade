@@ -37,7 +37,7 @@
 //
 //==========================================================================*
 class GFXRuntime {
-    
+
 // =============================
 // ======== P U B L I C ========
 public:
@@ -51,7 +51,7 @@ public:
         RIGHT,
         SPACE
     };
-    
+
     //&---------------------------------------------------------------------*
     //&      Constructor  GFXRuntime
     //&---------------------------------------------------------------------*
@@ -65,7 +65,7 @@ public:
     //
     //----------------------------------------------------------------------*
     GFXRuntime(sf::RenderWindow& id_rWindow);
-    
+
     //&---------------------------------------------------------------------*
     //&      Destructor  ~GFXRuntime
     //&---------------------------------------------------------------------*
@@ -86,21 +86,21 @@ public:
     //
     //----------------------------------------------------------------------*
     sf::RenderWindow* getWindow();
-    
+
     //&---------------------------------------------------------------------*
     //&      Method  getTime
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
     const sf::Time getTimeElapsed();
-    
+
     //&---------------------------------------------------------------------*
     //&      Method  isKeyPressedDown
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
     bool isKeyPressed(const KEY id_key);
-    
+
     //&---------------------------------------------------------------------*
     //&      Method  isKeyDown
     //&---------------------------------------------------------------------*
@@ -111,27 +111,27 @@ public:
 // =============================
 // ======= P R I V A T E =======
 private:
-    
+
 	sf::RenderWindow* m_pWindow;
     sf::Time m_elapsed;
 	sf::Clock m_clock;
-        
+
     enum STATE {
         IS_DOWN = 0,
         WAS_DOWN,
         PRESSED
     };
-    
+
     static const int MAX_KEYS = 7;
-    
-    bool m_keys[MAX_KEYS][3] = { false, false, false,
-                                 false, false, false,
-                                 false, false, false,
-                                 false, false, false,
-                                 false, false, false,
-                                 false, false, false,
-                                 false, false, false };
-    
+
+    bool m_keys[MAX_KEYS][3] = { {false, false, false},
+                                 {false, false, false},
+                                 {false, false, false},
+                                 {false, false, false},
+                                 {false, false, false},
+                                 {false, false, false},
+                                 {false, false, false} };
+
     std::list<int> m_tmpKeys;
 
 };

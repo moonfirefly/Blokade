@@ -72,7 +72,7 @@ GFXBean::GFXBean(const unsigned char* id_label, int id_value, void* id_pData) {
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-const const char* GFXBean::getLabel() const {
+const char* GFXBean::getLabel() const {
     return m_label;
 }
 

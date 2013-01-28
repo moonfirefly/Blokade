@@ -194,9 +194,9 @@ bool GFXMenu::setTitle(const char* id_pTitle, const int id_x, const int id_y) {
         m_titleSet = true;
     }
 
-    m_titleSprite.setPosition(id_x, id_y);    
+    m_titleSprite.setPosition(id_x, id_y);
     m_title = id_pTitle;
-    
+
     return true;
 }
 
@@ -212,7 +212,7 @@ void GFXMenu::update(GFXRuntime* id_pRuntime) {
 
     if (m_selectedItemIndex >= 0) {
         if (id_pRuntime->isKeyPressed(GFXRuntime::KEY::DOWN)) {
-            if (m_selectedItemIndex < (m_items.size() - 1)) {
+            if (m_selectedItemIndex < static_cast<int>((m_items.size() - 1))) {
                 selectItemByIndex(m_selectedItemIndex + 1);
             }
         }
@@ -233,7 +233,7 @@ void GFXMenu::update(GFXRuntime* id_pRuntime) {
             m_pressedItemIndex = m_selectedItemIndex;
         }
     }
-    
+
     for (std::vector<GFXMenuItem*>::const_iterator i = m_items.begin(); i != m_items.end(); ++i) {
         (**i).update(id_pRuntime);
     }
