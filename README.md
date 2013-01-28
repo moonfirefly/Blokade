@@ -30,6 +30,12 @@ https://vimeo.com/57818102
 Binaries
 ========
 
+Requires to install Quartz (OSX 10.6 and later):
+http://xquartz.macosforge.org/
+
+and SFML 2.0 libraries for Mac OSX (use the installer):
+http://www.sfml-dev.org/download.php
+
 Download and play the pre-compiled game:
 https://www.dropbox.com/sh/xsywbqqtoe223zd/Z2tWZZ1g_-
 
