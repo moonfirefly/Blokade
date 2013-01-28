@@ -23,14 +23,14 @@
 //
 //***************************************************************************
 
-#include "BlokadeGame.hpp"
+#include "Game/BlokadeGame.hpp"
 
 int main (int argc, const char * argv[]) {
     BlokadeGame game;
-    
+
     if (!game.run()) {
         return EXIT_FAILURE;
     }
-    
+
 	return EXIT_SUCCESS;
 }
