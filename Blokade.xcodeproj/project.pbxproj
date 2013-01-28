@@ -1,0 +1,352 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		020B46FD16B6519400437020 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020B46FC16B6519400437020 /* Foundation.framework */; };
+		020B470016B6519400437020 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 020B46FF16B6519400437020 /* main.cpp */; };
+		020B470216B6519400437020 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 020B470116B6519400437020 /* ResourcePath.mm */; };
+		020B470616B6519400437020 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 020B470516B6519400437020 /* sansation.ttf */; };
+		020B470816B6519400437020 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 020B470716B6519400437020 /* cute_image.jpg */; };
+		020B470A16B6519400437020 /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 020B470916B6519400437020 /* nice_music.ogg */; };
+		020B470F16B6519400437020 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 020B470D16B6519400437020 /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		020B46F816B6519400437020 /* Blokade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blokade.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		020B46FC16B6519400437020 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		020B46FF16B6519400437020 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		020B470116B6519400437020 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
+		020B470316B6519400437020 /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
+		020B470516B6519400437020 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
+		020B470716B6519400437020 /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cute_image.jpg; sourceTree = "<group>"; };
+		020B470916B6519400437020 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
+		020B470C16B6519400437020 /* Blokade-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Blokade-Info.plist"; sourceTree = "<group>"; };
+		020B470E16B6519400437020 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		020B46F516B6519400437020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020B46FD16B6519400437020 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		020B46EC16B6519400437020 = {
+			isa = PBXGroup;
+			children = (
+				020B46FE16B6519400437020 /* Blokade */,
+				020B46FB16B6519400437020 /* Frameworks */,
+				020B46F916B6519400437020 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		020B46F916B6519400437020 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				020B46F816B6519400437020 /* Blokade.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		020B46FB16B6519400437020 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				020B46FC16B6519400437020 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		020B46FE16B6519400437020 /* Blokade */ = {
+			isa = PBXGroup;
+			children = (
+				020B46FF16B6519400437020 /* main.cpp */,
+				020B470116B6519400437020 /* ResourcePath.mm */,
+				020B470316B6519400437020 /* ResourcePath.hpp */,
+				020B470416B6519400437020 /* Resources */,
+				020B470B16B6519400437020 /* Supporting Files */,
+			);
+			path = Blokade;
+			sourceTree = "<group>";
+		};
+		020B470416B6519400437020 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				020B470516B6519400437020 /* sansation.ttf */,
+				020B470716B6519400437020 /* cute_image.jpg */,
+				020B470916B6519400437020 /* nice_music.ogg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		020B470B16B6519400437020 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				020B470C16B6519400437020 /* Blokade-Info.plist */,
+				020B470D16B6519400437020 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		020B46F716B6519400437020 /* Blokade */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 020B471216B6519400437020 /* Build configuration list for PBXNativeTarget "Blokade" */;
+			buildPhases = (
+				020B46F316B6519400437020 /* ShellScript */,
+				020B46F416B6519400437020 /* Sources */,
+				020B46F516B6519400437020 /* Frameworks */,
+				020B46F616B6519400437020 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Blokade;
+			productName = Blokade;
+			productReference = 020B46F816B6519400437020 /* Blokade.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		020B46EE16B6519400437020 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = moonfirefly;
+			};
+			buildConfigurationList = 020B46F116B6519400437020 /* Build configuration list for PBXProject "Blokade" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 020B46EC16B6519400437020;
+			productRefGroup = 020B46F916B6519400437020 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				020B46F716B6519400437020 /* Blokade */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		020B46F616B6519400437020 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020B470616B6519400437020 /* sansation.ttf in Resources */,
+				020B470816B6519400437020 /* cute_image.jpg in Resources */,
+				020B470A16B6519400437020 /* nice_music.ogg in Resources */,
+				020B470F16B6519400437020 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		020B46F316B6519400437020 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This shell script simply copies required sfml dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# Are we building a project that uses framework or dylibs ?\nif [ $SFML_LINK_PREFIX = $SFML_LINK_FRAMEWORKS_PREFIX ]\nthen\n    frameworks=1\nelse\n    frameworks=0\nfi\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app/Contents/Frameworks\n    \n    if [ -z $1 ]\n    then\n        echo \"no parameter! ERROR!\"\n        exit\n    else\n        # clean potentially old stuff\n        rm -f $dest/libsfml-$1.2.dylib\n        rm -f $dest/libsfml-$1-d.2.dylib\n        rm -fr $dest/sfml-$1.framework\n    \n        # copy SFML libraries\n        if [ $frameworks ]\n        then\n            ditto \"/Library/Frameworks/sfml-$1.framework\" \"$dest/sfml-$1.framework\"\n        elif [ $CONFIGURATION = \"Debug\" ]\n        then\n            ditto \"/usr/local/lib/libsfml-$1-d.2.dylib\" \"$dest/libsfml-$1-d.2.dylib\"\n        else\n            ditto \"/usr/local/lib/libsfml-$1.2.dylib\" \"$dest/libsfml-$1.2.dylib\"\n        fi\n        \n        if [ $1 = \"audio\" ]\n        then\n            # copy sndfile framework too\n            ditto \"/Library/Frameworks/sndfile.framework\" \"$dest/sndfile.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\t\t\t\t\t";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		020B46F416B6519400437020 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020B470016B6519400437020 /* main.cpp in Sources */,
+				020B470216B6519400437020 /* ResourcePath.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		020B470D16B6519400437020 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				020B470E16B6519400437020 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		020B471016B6519400437020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = "";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(HEADER_SEARCH_PATHS)",
+					/usr/local/include/,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SFML_AUDIO = "$(SFML_LINK_PREFIX)sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX)sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "-d";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework ";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_DYLIBS_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_DYLIBS_SUFFIX)";
+				SFML_NETWORK = "$(SFML_LINK_PREFIX)sfml-network$(SFML_LINK_SUFFIX)";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX)sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX)sfml-window$(SFML_LINK_SUFFIX)";
+			};
+			name = Debug;
+		};
+		020B471116B6519400437020 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = "";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(HEADER_SEARCH_PATHS)",
+					/usr/local/include/,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SFML_AUDIO = "$(SFML_LINK_PREFIX)sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX)sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework ";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_DYLIBS_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_DYLIBS_SUFFIX)";
+				SFML_NETWORK = "$(SFML_LINK_PREFIX)sfml-network$(SFML_LINK_SUFFIX)";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX)sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX)sfml-window$(SFML_LINK_SUFFIX)";
+			};
+			name = Release;
+		};
+		020B471316B6519400437020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Blokade/Blokade-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		020B471416B6519400437020 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Blokade/Blokade-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		020B46F116B6519400437020 /* Build configuration list for PBXProject "Blokade" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020B471016B6519400437020 /* Debug */,
+				020B471116B6519400437020 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		020B471216B6519400437020 /* Build configuration list for PBXNativeTarget "Blokade" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020B471316B6519400437020 /* Debug */,
+				020B471416B6519400437020 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 020B46EE16B6519400437020 /* Project object */;
+}
