@@ -24,7 +24,7 @@ project is also provided so you can compile on Windows.
 Video
 -----
 
-See the game running: https://vimeo.com/57818102
+See the game running <a href="https://vimeo.com/57818102">here</a>.
 
 Binaries
 --------
@@ -36,21 +36,21 @@ OSX
   * <a href="https://www.dropbox.com/s/c7537decwvfivqz/Blokade.zip">https://www.dropbox.com/s/c7537decwvfivqz/Blokade.zip</a>
 
     Requires to install Quartz (OSX 10.6 and later): 
-    http://xquartz.macosforge.org/
+    <a href="http://xquartz.macosforge.org/">http://xquartz.macosforge.org/</a>
 
     and SFML 2.0 libraries for Mac OSX (use the installer): 
-    http://www.sfml-dev.org/download.php
+    <a href="http://www.sfml-dev.org/download.php">http://www.sfml-dev.org/download.php</a>
     
     You probably need OSX 10.8.2 to run it as well.
 
 Windows
 
-  * http://www.sfmluploads.org/file/166/download
+  * <a href="http://www.sfmluploads.org/file/166/download">http://www.sfmluploads.org/file/166/download</a>
 
     The windows build was with compiled with the necessary libraries
     so no extra download required.
     
-    Props to eXpl0it3r for providing the windows executable :)
+    Props to <a href="https://github.com/eXpl0it3r">eXpl0it3r</a> for providing the windows executable :)
 
 Controls
 --------
@@ -84,7 +84,7 @@ Licensed under the Apache License, Version 2.0 (the "License"); you
 may not use this file except in compliance with the License. You may 
 obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>
 
 Unless required by applicable law or agreed to in writing, software 
 distributed under the License is distributed on an "AS IS" BASIS, 
