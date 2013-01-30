@@ -13,9 +13,9 @@ is my first game with SFML and it's going well, easy library to work
 with. The game is obviously another falling blocks clone but I wanted 
 to design a simple game that I could actually finish.
 
-I wrote the code and made the graphics except the font. I generated 
-the sound effects with Bfxr. Both background tunes are free loops I 
-got from Joshua Hardin.
+I wrote the code and made the graphics except the <a href="http://www.ms-studio.com/FontSales/anonymous.html">font</a>. I generated 
+the sound effects with <a href="http://www.bfxr.net/">Bfxr</a>. Both background tunes are free loops I 
+got from <a href="http://www.joshuahardin.com/free_music_loops.php">Joshua Hardin</a>.
 
 Open the project in Xcode 4.5.2 with Quartz and SFML 2.0 installed 
 and the game should compile and run right away. The Code::Blocks
