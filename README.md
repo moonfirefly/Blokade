@@ -33,7 +33,7 @@ Download and play the pre-compiled game:
     
 OSX
 
-  * https://www.dropbox.com/s/c7537decwvfivqz/Blokade.zip
+  * <a href="https://www.dropbox.com/s/c7537decwvfivqz/Blokade.zip">https://www.dropbox.com/s/c7537decwvfivqz/Blokade.zip</a>
 
     Requires to install Quartz (OSX 10.6 and later): 
     http://xquartz.macosforge.org/
