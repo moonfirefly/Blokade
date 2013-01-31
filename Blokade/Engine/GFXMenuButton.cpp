@@ -34,8 +34,8 @@ sf::Texture GFXMenuButton::m_buttonsSheet;
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-bool GFXMenuButton::init(const char* id_pLabel, const int id_tag) {
-    return init(id_pLabel, 0, 0, id_tag);
+bool GFXMenuButton::init(const std::string id_string, const int id_tag) {
+    return init(id_string, 0, 0, id_tag);
 }
 
 //&---------------------------------------------------------------------*
@@ -43,16 +43,7 @@ bool GFXMenuButton::init(const char* id_pLabel, const int id_tag) {
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-bool GFXMenuButton::init(const unsigned char* id_pLabel, const int id_tag) {
-    return init((char*)id_pLabel, 0, 0, id_tag);
-}
-
-//&---------------------------------------------------------------------*
-//&      Method  init
-//&---------------------------------------------------------------------*
-//
-//----------------------------------------------------------------------*
-bool GFXMenuButton::init(const char* id_pLabel, const int id_x, const int id_y, const int id_tag) {
+bool GFXMenuButton::init(const std::string id_string, const int id_x, const int id_y, const int id_tag) {
     if (!m_init) {
         // Load button background once for all button instances
         if (!m_buttonsSheet.loadFromFile(resourcePath() + "menubutton.png")) {
@@ -61,11 +52,11 @@ bool GFXMenuButton::init(const char* id_pLabel, const int id_x, const int id_y, 
         m_init = true;
     }
 
-    if (id_pLabel != NULL) {
+    if (id_string != "") {
         // Label provided, set and compute offset from left side for it to be centered
-        m_pLabel = id_pLabel;
-        m_labelXOffset = GFXFont::GET_CENTER_OFFSET(BUTTON_WIDTH, GFXFont::GET_CHARS_OUTPUT_LENGTH(m_pLabel));
-        m_font.init(id_pLabel);
+        m_label = id_string;
+        m_labelXOffset = GFXFont::GET_CENTER_OFFSET(BUTTON_WIDTH, GFXFont::GET_STRING_OUTPUT_LENGTH(m_label));
+        m_font.init(id_string);
     }
 
     m_tag = id_tag;
@@ -103,7 +94,7 @@ bool GFXMenuButton::init(const char* id_pLabel, const int id_x, const int id_y, 
 void GFXMenuButton::setPosition(const int id_x, const int id_y) {
     m_normalSprite.setPosition(id_x, id_y);
     m_selectedSprite.setPosition(id_x, id_y);
-    if (m_pLabel != NULL) {
+    if (m_label != "") {
         // Label provided, position it according to pre-computed relative location
         m_font.setPosition(id_x + m_labelXOffset, id_y + LABEL_Y_OFFSET);
     }
@@ -148,7 +139,7 @@ void GFXMenuButton::draw(sf::RenderTarget& id_rTarget, sf::RenderStates id_state
     else {
         id_rTarget.draw(m_normalSprite, id_states);
     }
-    if (m_pLabel != NULL) {
+    if (m_label != "") {
         id_rTarget.draw(m_font, id_states);
     }
 }

@@ -155,17 +155,6 @@ public:
     //----------------------------------------------------------------------*
     virtual void setSelectedIndex(const int id_index) {}
 
-// =============================
-// ===== P R O T E C T E D =====
-protected:
-
-    const GFXMenu* m_pParent = NULL;
-    int m_childIndex = 0;
-    
-// =============================
-// ======= P R I V A T E =======
-private:
-
 };
 
 #endif /* defined(__Blokade__GFXMenuItem__hpp) */

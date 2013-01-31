@@ -1000,22 +1000,22 @@ void BlokadeGame::renderGame() {
     }
     
     // Display game score
-    m_font.drawBytesAtPos(i18n::LINES, 38, 59, GAME_LABEL_CENTER_WIDTH);
-    m_font.drawCharsAtPos(m_points.getLinesAsChars(), 58, 135);
-    m_font.drawBytesAtPos(i18n::LEVEL, 38, 235, GAME_LABEL_CENTER_WIDTH);
-    m_font.drawCharsAtPos(m_points.getLevelAsChars(), 58, 310);
-    m_font.drawBytesAtPos(i18n::TOP, 726, 59, GAME_LABEL_CENTER_WIDTH);
-    m_font.drawCharsAtPos(m_points.getTopPointsAsChars(), 742, 135);
-    m_font.drawBytesAtPos(i18n::SCORE, 726, 235, GAME_LABEL_CENTER_WIDTH);
-    m_font.drawCharsAtPos(m_points.getPointsAsChars(), 742, 310);
-    m_font.drawBytesAtPos(i18n::NEXT, 726, 413, GAME_LABEL_CENTER_WIDTH);
+    m_font.drawStringAtPos(i18n::LINES, 38, 59, GAME_LABEL_CENTER_WIDTH);
+    m_font.drawStringAtPos(m_points.getLinesAsString(), 58, 135);
+    m_font.drawStringAtPos(i18n::LEVEL, 38, 235, GAME_LABEL_CENTER_WIDTH);
+    m_font.drawStringAtPos(m_points.getLevelAsString(), 58, 310);
+    m_font.drawStringAtPos(i18n::TOP, 726, 59, GAME_LABEL_CENTER_WIDTH);
+    m_font.drawStringAtPos(m_points.getTopPointsAsString(), 742, 135);
+    m_font.drawStringAtPos(i18n::SCORE, 726, 235, GAME_LABEL_CENTER_WIDTH);
+    m_font.drawStringAtPos(m_points.getPointsAsString(), 742, 310);
+    m_font.drawStringAtPos(i18n::NEXT, 726, 413, GAME_LABEL_CENTER_WIDTH);
     
     // Display next shape
     drawNextShape();
 
     // Display in-game menu (pause or game over)
     if (m_isPaused) {
-        m_font.drawBytesAtPos(i18n::PAUSE, 375, 20, 280);
+        m_font.drawStringAtPos(i18n::PAUSE, 375, 20, 280);
         switch (m_gameSubState) {
             case GAME_SUB_STATE::NORMAL:
                 m_runtime.getWindow()->draw(m_gameMenuPause);
@@ -1030,7 +1030,7 @@ void BlokadeGame::renderGame() {
     else {
         switch (m_gameSubState) {
             case DEAD:
-                m_font.drawBytesAtPos(i18n::GAME_OVER, 375, 20, 280);
+                m_font.drawStringAtPos(i18n::GAME_OVER, 375, 20, 280);
                 m_runtime.getWindow()->draw(m_gameMenuOver);
                 break;
             default:

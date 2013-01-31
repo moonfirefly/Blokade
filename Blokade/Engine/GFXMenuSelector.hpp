@@ -28,6 +28,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <string>
 #include "GFXMenuItem.hpp"
 #include "GFXFont.hpp"
 #include "GFXBean.hpp"
@@ -38,7 +39,7 @@
 //&=========================================================================*
 //
 //==========================================================================*
-class GFXMenuSelector : public GFXMenuItem, public sf::Drawable {
+class GFXMenuSelector : public GFXMenuItem {
 
 // =============================
 // ======== P U B L I C ========
@@ -63,21 +64,14 @@ public:
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    bool init(const char* id_pLabel, const int id_tag, const std::vector<GFXBean>* it_pValues);
+    bool init(const std::string id_label, const int id_tag, const std::vector<GFXBean>* it_pValues);
 
     //&---------------------------------------------------------------------*
     //&      Method  init
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    bool init(const unsigned char* id_pLabel, const int id_tag, const std::vector<GFXBean>* it_pValues);
-
-    //&---------------------------------------------------------------------*
-    //&      Method  init
-    //&---------------------------------------------------------------------*
-    //
-    //----------------------------------------------------------------------*
-    bool init(const char* id_pLabel, const int id_x, const int id_y, const int id_tag,
+    bool init(const std::string id_label, const int id_x, const int id_y, const int id_tag,
               const std::vector<GFXBean>* it_pValues);
 
     //&---------------------------------------------------------------------*

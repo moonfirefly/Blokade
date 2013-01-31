@@ -34,8 +34,8 @@ sf::Texture GFXMenuSelector::m_buttonsSheet;
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-bool GFXMenuSelector::init(const char* id_pLabel, const int id_tag, const std::vector<GFXBean>* it_pValues) {
-    return init(id_pLabel, 0, 0, id_tag, it_pValues);
+bool GFXMenuSelector::init(const std::string id_label, const int id_tag, const std::vector<GFXBean>* it_pValues) {
+    return init(id_label, 0, 0, id_tag, it_pValues);
 }
 
 //&---------------------------------------------------------------------*
@@ -43,16 +43,7 @@ bool GFXMenuSelector::init(const char* id_pLabel, const int id_tag, const std::v
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-bool GFXMenuSelector::init(const unsigned char* id_pLabel, const int id_tag, const std::vector<GFXBean>* it_pValues) {
-    return init((char*)id_pLabel, 0, 0, id_tag, it_pValues);
-}
-
-//&---------------------------------------------------------------------*
-//&      Method  init
-//&---------------------------------------------------------------------*
-//
-//----------------------------------------------------------------------*
-bool GFXMenuSelector::init(const char* id_pLabel, const int id_x, const int id_y,
+bool GFXMenuSelector::init(const std::string id_label, const int id_x, const int id_y,
                            const int id_tag, const std::vector<GFXBean>* it_pValues) {
     if (!m_init) {
         // Load button background once for all button instances
@@ -62,9 +53,9 @@ bool GFXMenuSelector::init(const char* id_pLabel, const int id_x, const int id_y
         m_init = true;
     }
 
-    if (id_pLabel != NULL) {
+    if (id_label != "") {
         // Label provided, set and compute offset from left side for it to be centered
-        m_fontLabel.init(id_pLabel);
+        m_fontLabel.init(id_label);
     }
 
     m_pValues = it_pValues;

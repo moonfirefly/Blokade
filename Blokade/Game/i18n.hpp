@@ -26,6 +26,8 @@
 #ifndef __Blokade_i18n_hpp
 #define __Blokade_i18n_hpp
 
+#include <string>
+
 //&=========================================================================*
 //&      Class  i18n
 //&=========================================================================*
@@ -42,6 +44,15 @@ public:
         FRENCH,
     };
     
+    // Characters over 128 ascii code and control characters, this ensures
+    // cross-platform compatibility and avoids automatic UTF16 in Xcode.
+    // (wouldn't be required if Windows was the only target OS)
+    static const std::string ASCII_EACUTE;
+    static const std::string ASCII_TAB;
+    static const std::string ASCII_CARRIAGE_RETURN;
+    static const std::string ASCII_UEACUTE;
+    static const std::string ASCII_BLOCK;
+
     i18n() {}
     
     ~i18n() {}
@@ -52,23 +63,23 @@ public:
     static const LANGUAGE m_language = LANGUAGE::ENGLISH;
 #endif
 
-    static const unsigned char* START;
-    static const unsigned char* OPTIONS;
-    static const unsigned char* EXIT;
-    static const unsigned char* SOUND;
-    static const unsigned char* MUSIC;
-    static const unsigned char* BACK;
-    static const unsigned char* LEVEL;
-    static const unsigned char* LINES;
-    static const unsigned char* TOP;
-    static const unsigned char* SCORE;
-    static const unsigned char* NEXT;
-    static const unsigned char* PAUSE;
-    static const unsigned char* GAME_OVER;
-    static const unsigned char* QUIT;
-    static const unsigned char* RESUME;
-    static const unsigned char* RESTART;
-    static const unsigned char* MUTED;
+    static const std::string START;
+    static const std::string OPTIONS;
+    static const std::string EXIT;
+    static const std::string SOUND;
+    static const std::string MUSIC;
+    static const std::string BACK;
+    static const std::string LEVEL;
+    static const std::string LINES;
+    static const std::string TOP;
+    static const std::string SCORE;
+    static const std::string NEXT;
+    static const std::string PAUSE;
+    static const std::string GAME_OVER;
+    static const std::string QUIT;
+    static const std::string RESUME;
+    static const std::string RESTART;
+    static const std::string MUTED;
     
 };
 
