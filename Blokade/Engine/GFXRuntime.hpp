@@ -26,8 +26,6 @@
 #ifndef __Blokade__GFXRuntime__hpp
 #define __Blokade__GFXRuntime__hpp
 
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include <list>
 
@@ -57,7 +55,7 @@ public:
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    GFXRuntime();
+    GFXRuntime() {}
 
     //&---------------------------------------------------------------------*
     //&      Constructor  GFXRuntime
@@ -112,7 +110,7 @@ public:
 // ======= P R I V A T E =======
 private:
 
-	sf::RenderWindow* m_pWindow;
+	sf::RenderWindow* m_pWindow = NULL;
     sf::Time m_elapsed;
 	sf::Clock m_clock;
 

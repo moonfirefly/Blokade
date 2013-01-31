@@ -202,9 +202,7 @@ void GFXFont::drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, con
         else {
             lastCharWasSmall = false;
         }
-        if (value >= 0 ) {
-            offset++;
-        }
+        offset++;
     }
 }
 
@@ -254,9 +252,7 @@ const int GFXFont::GET_BYTES_OUTPUT_LENGTH(const unsigned char* id_pBytes) {
         else {
             lastCharWasSmall = false;
         }
-        if (value >= 0 ) {
-            offset += CHAR_PIXEL_WIDTH - SPACING - shift;
-        }
+        offset += CHAR_PIXEL_WIDTH - SPACING - shift;
     }
     for (std::list<int>::const_iterator i = linesLen.begin(); i != linesLen.end(); ++i) {
         if ((*i) > offset) {

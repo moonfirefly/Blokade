@@ -26,8 +26,6 @@
 #ifndef __Blokade__GFXMenuItem__hpp
 #define __Blokade__GFXMenuItem__hpp
 
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include "GFXRuntime.hpp"
 #include "GFXBean.hpp"

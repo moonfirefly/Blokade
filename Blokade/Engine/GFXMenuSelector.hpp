@@ -26,8 +26,6 @@
 #ifndef __Blokade__GFXMenuSelector__hpp
 #define __Blokade__GFXMenuSelector__hpp
 
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "GFXMenuItem.hpp"
@@ -187,8 +185,6 @@ private:
     static sf::Texture m_buttonsSheet;
     static bool m_init;
 
-   // const char* m_pLabel = NULL;
-    //const char* m_pValue = NULL;
     static const int LABEL_X_OFFSET = 50;
     static const int LABEL_Y_OFFSET = 23;
 

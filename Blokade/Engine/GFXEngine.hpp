@@ -26,8 +26,6 @@
 #ifndef __Blokade_GFXEngine_hpp
 #define __Blokade_GFXEngine_hpp
 
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "GFXRuntime.hpp"
@@ -123,7 +121,7 @@ protected:
 // ======= P R I V A T E =======
 private:
 	
-    sf::RenderWindow* m_pWindow;
+    sf::RenderWindow* m_pWindow = NULL;
 
 };
 

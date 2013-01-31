@@ -26,8 +26,6 @@
 #ifndef __Blokade__GFXBean__hpp
 #define __Blokade__GFXBean__hpp
 
-#pragma once
-
 #include <string>
 
 //&=========================================================================*
@@ -53,28 +51,28 @@ public:
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    GFXBean(const char* id_label, int id_value);
+    GFXBean(const char* id_label, const int id_value);
 
     //&---------------------------------------------------------------------*
     //&      Constructor  GFXBean
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    GFXBean(const unsigned char* id_label, int id_value);
+    GFXBean(const unsigned char* id_label, const int id_value);
 
     //&---------------------------------------------------------------------*
     //&      Constructor  GFXBean
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    GFXBean(const char* id_label, int id_value, void* id_pData);
+    GFXBean(const char* id_label, const int id_value, const void* id_pData);
 
     //&---------------------------------------------------------------------*
     //&      Constructor  GFXBean
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    GFXBean(const unsigned char* id_label, int id_value, void* id_pData);
+    GFXBean(const unsigned char* id_label, const int id_value, const void* id_pData);
 
     //&---------------------------------------------------------------------*
     //&      Destructor  ~GFXBean

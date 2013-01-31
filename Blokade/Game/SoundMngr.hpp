@@ -26,8 +26,6 @@
 #ifndef __Blokade__SoundMngr__hpp
 #define __Blokade__SoundMngr__hpp
 
-#pragma once
-
 #include <SFML/Audio.hpp>
 #include "../Engine/GFXBean.hpp"
 #include "i18n.hpp"

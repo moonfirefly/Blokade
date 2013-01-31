@@ -26,8 +26,6 @@
 #ifndef __Blokade_Points_hpp
 #define __Blokade_Points_hpp
 
-#pragma once
-
 #include <math.h>
 #include <vector>
 #include "../Engine/GFXBean.hpp"

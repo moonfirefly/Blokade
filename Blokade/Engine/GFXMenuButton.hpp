@@ -26,8 +26,6 @@
 #ifndef __Blokade__GFXMenuButton__hpp
 #define __Blokade__GFXMenuButton__hpp
 
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include "GFXMenuItem.hpp"
 #include "GFXFont.hpp"
@@ -38,7 +36,7 @@
 //&=========================================================================*
 //
 //==========================================================================*
-class GFXMenuButton : public GFXMenuItem, public sf::Drawable {
+class GFXMenuButton : public GFXMenuItem {
 
 // =============================
 // ======== P U B L I C ========

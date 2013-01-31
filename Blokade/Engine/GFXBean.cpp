@@ -30,7 +30,7 @@
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-GFXBean::GFXBean(const char* id_label, int id_value) {
+GFXBean::GFXBean(const char* id_label, const int id_value) {
     m_label = id_label;
     m_value = id_value;
 }
@@ -40,7 +40,7 @@ GFXBean::GFXBean(const char* id_label, int id_value) {
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-GFXBean::GFXBean(const unsigned char* id_label, int id_value) {
+GFXBean::GFXBean(const unsigned char* id_label, const int id_value) {
     m_label = (char*)id_label;
     m_value = id_value;
 }
@@ -50,7 +50,7 @@ GFXBean::GFXBean(const unsigned char* id_label, int id_value) {
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-GFXBean::GFXBean(const char* id_label, int id_value, void* id_pData) {
+GFXBean::GFXBean(const char* id_label, const int id_value, const void* id_pData) {
     m_label = id_label;
     m_value = id_value;
     m_pData = id_pData;
@@ -61,7 +61,7 @@ GFXBean::GFXBean(const char* id_label, int id_value, void* id_pData) {
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-GFXBean::GFXBean(const unsigned char* id_label, int id_value, void* id_pData) {
+GFXBean::GFXBean(const unsigned char* id_label, const int id_value, const void* id_pData) {
     m_label = (char*)id_label;
     m_value = id_value;
     m_pData = id_pData;
