@@ -95,3 +95,5 @@ bool GFXBean::operator==(const GFXBean& id_rOtherBean) const {
         return false;
     }
 }
+
+

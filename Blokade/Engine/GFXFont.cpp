@@ -258,3 +258,5 @@ void GFXFont::draw(sf::RenderTarget& id_rTarget, sf::RenderStates id_states) con
     }
 }
 
+
+
