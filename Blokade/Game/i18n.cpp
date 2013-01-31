@@ -25,40 +25,49 @@
 
 #include "i18n.hpp"
 
+// Characters over 128 ascii code, this ensures cross-platform
+// compatibility and avoids automatic UTF16 in Xcode
+// (wouldn't be required if Windows was the only target OS)
+const std::string i18n::ASCII_EACUTE = "\xe9";            // 233  é
+const std::string i18n::ASCII_UEACUTE = "\xc9";           // 201  É
+const std::string i18n::ASCII_TAB = "\x09";               // 9    TAB
+const std::string i18n::ASCII_CARRIAGE_RETURN = "\x0d";   // 13   CR
+const std::string i18n::ASCII_BLOCK = "\x1c";             // 28   (block)
+
 #ifdef BLOKADE_LANGUAGE_FR
-const unsigned char* i18n::START = (const unsigned char*)"Jouer";
-const unsigned char* i18n::OPTIONS = (const unsigned char*)"Options";
-const unsigned char* i18n::EXIT = (const unsigned char*)"Sortie";
-const unsigned char* i18n::SOUND = (const unsigned char*)"Son";
-const unsigned char* i18n::MUSIC = (const unsigned char*)"Musique";
-const unsigned char* i18n::BACK = (const unsigned char*)"Retour";
-const unsigned char* i18n::LEVEL = (const unsigned char*)"Niveau";
-const unsigned char* i18n::LINES = (const unsigned char*)"Lignes";
-const unsigned char* i18n::TOP = (const unsigned char*)"Record";
-const unsigned char* i18n::SCORE = (const unsigned char*)"Points";
-const unsigned char* i18n::NEXT = (const unsigned char*)"Suivant";
-const unsigned char* i18n::PAUSE = (const unsigned char*)"*Pause*";
-const unsigned char* i18n::GAME_OVER = (const unsigned char*)"TERMIN\xc9";
-const unsigned char* i18n::QUIT = (const unsigned char*)"Quitter";
-const unsigned char* i18n::RESUME = (const unsigned char*)"Continuer";
-const unsigned char* i18n::RESTART = (const unsigned char*)"Rejouer";
-const unsigned char* i18n::MUTED = (const unsigned char*)"silence";
+const std::string i18n::START = "Jouer";
+const std::string i18n::OPTIONS = "Options";
+const std::string i18n::EXIT = "Sortie";
+const std::string i18n::SOUND = "Son";
+const std::string i18n::MUSIC = "Musique";
+const std::string i18n::BACK = "Retour";
+const std::string i18n::LEVEL = "Niveau";
+const std::string i18n::LINES = "Lignes";
+const std::string i18n::TOP = "Record";
+const std::string i18n::SCORE = "Points";
+const std::string i18n::NEXT = "Suivant";
+const std::string i18n::PAUSE = "*Pause*";
+const std::string i18n::GAME_OVER = "TERMIN" + i18n::ASCII_UEACUTE;
+const std::string i18n::QUIT = "Quitter";
+const std::string i18n::RESUME = "Continuer";
+const std::string i18n::RESTART = "Rejouer";
+const std::string i18n::MUTED = "silence";
 #else
-const unsigned char* i18n::START = (const unsigned char*)"Start";
-const unsigned char* i18n::OPTIONS = (const unsigned char*)"Options";
-const unsigned char* i18n::EXIT = (const unsigned char*)"Exit";
-const unsigned char* i18n::SOUND = (const unsigned char*)"Sound";
-const unsigned char* i18n::MUSIC = (const unsigned char*)"Music";
-const unsigned char* i18n::BACK = (const unsigned char*)"Back";
-const unsigned char* i18n::LEVEL = (const unsigned char*)"Level";
-const unsigned char* i18n::LINES = (const unsigned char*)"Lines";
-const unsigned char* i18n::TOP = (const unsigned char*)"Top";
-const unsigned char* i18n::SCORE = (const unsigned char*)"Score";
-const unsigned char* i18n::NEXT = (const unsigned char*)"Next";
-const unsigned char* i18n::PAUSE = (const unsigned char*)"*Pause*";
-const unsigned char* i18n::GAME_OVER = (const unsigned char*)"GAME OVER";
-const unsigned char* i18n::QUIT = (const unsigned char*)"Quit";
-const unsigned char* i18n::RESUME = (const unsigned char*)"Resume";
-const unsigned char* i18n::RESTART = (const unsigned char*)"Restart";
-const unsigned char* i18n::MUTED = (const unsigned char*)"muted";
+const std::string i18n::START = "Start";
+const std::string i18n::OPTIONS = "Options";
+const std::string i18n::EXIT = "Exit";
+const std::string i18n::SOUND = "Sound";
+const std::string i18n::MUSIC = "Music";
+const std::string i18n::BACK = "Back";
+const std::string i18n::LEVEL = "Level";
+const std::string i18n::LINES = "Lines";
+const std::string i18n::TOP = "Top";
+const std::string i18n::SCORE = "Score";
+const std::string i18n::NEXT = "Next";
+const std::string i18n::PAUSE = "*Pause*";
+const std::string i18n::GAME_OVER = "GAME OVER";
+const std::string i18n::QUIT = "Quit";
+const std::string i18n::RESUME = "Resume";
+const std::string i18n::RESTART = "Restart";
+const std::string i18n::MUTED = "muted";
 #endif

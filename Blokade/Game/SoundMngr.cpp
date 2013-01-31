@@ -47,11 +47,11 @@ const float SoundMngr::VOLUME_PERCENT[] = { 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f }
 SoundMngr::SoundMngr() {
     // Setup volume beans for menu selector
     m_volumeBeans.push_back(GFXBean(i18n::MUTED,0));
-    m_volumeBeans.push_back(GFXBean("\x1c    ",1));
-    m_volumeBeans.push_back(GFXBean("\x1c\x1c   ",2));
-    m_volumeBeans.push_back(GFXBean("\x1c\x1c\x1c  ",3));
-    m_volumeBeans.push_back(GFXBean("\x1c\x1c\x1c\x1c ",4));
-    m_volumeBeans.push_back(GFXBean("\x1c\x1c\x1c\x1c\x1c",5));
+    m_volumeBeans.push_back(GFXBean(i18n::ASCII_BLOCK + "    ",1));
+    m_volumeBeans.push_back(GFXBean(i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + "   ",2));
+    m_volumeBeans.push_back(GFXBean(i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + "  ",3));
+    m_volumeBeans.push_back(GFXBean(i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + " ",4));
+    m_volumeBeans.push_back(GFXBean(i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + i18n::ASCII_BLOCK + i18n::ASCII_BLOCK,5));
 }
 
 //&---------------------------------------------------------------------*

@@ -28,6 +28,7 @@
 
 #include <math.h>
 #include <list>
+#include <string>
 #include <SFML/Graphics.hpp>
 #include "../ResourcePath.hpp"
 
@@ -41,7 +42,7 @@ class GFXFont : public sf::Drawable {
 // =============================
 // ======== P U B L I C ========
 public:
-
+        
     //&---------------------------------------------------------------------*
     //&      Constructor  GFXFont
     //&---------------------------------------------------------------------*
@@ -68,7 +69,7 @@ public:
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    bool init(const char* id_pChar);
+    bool init(const std::string id_string);
 
     //&---------------------------------------------------------------------*
     //&      Method  setPosition
@@ -76,48 +77,27 @@ public:
     //
     //----------------------------------------------------------------------*
     void setPosition(const int id_x, const int id_y);
-
+    
     //&---------------------------------------------------------------------*
-    //&      Method  drawCharAtPos
-    //&---------------------------------------------------------------------*
-    //
-    //----------------------------------------------------------------------*
-    void drawCharAtPos(const char id_char, const int id_x, const int id_y) const;
-
-    //&---------------------------------------------------------------------*
-    //&      Method  drawCharsAtPos
+    //&      Method  drawStringAtPos
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    void drawCharsAtPos(const char* id_pChar, const int id_x, const int id_y) const;
-
+    void drawStringAtPos(const std::string id_string, const int id_x, const int id_y);
+    
     //&---------------------------------------------------------------------*
-    //&      Method  drawBytesAtPos
-    //&---------------------------------------------------------------------*
-    //
-    //----------------------------------------------------------------------*
-    void drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, const int id_y) const;
-
-    //&---------------------------------------------------------------------*
-    //&      Method  drawBytesAtPos
+    //&      Method  drawStringAtPos
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    void drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, const int id_y, const int id_centerWidth) const;
-
+    void drawStringAtPos(const std::string id_string, const int id_x, const int id_y, const int id_centerWidth);
+    
     //&---------------------------------------------------------------------*
-    //&      Method  GET_CHARS_OUTPUT_LENGTH
-    //&---------------------------------------------------------------------*
-    //
-    //----------------------------------------------------------------------*
-    static const int GET_CHARS_OUTPUT_LENGTH(const char* id_pChar);
-
-    //&---------------------------------------------------------------------*
-    //&      Method  GET_CHARS_OUTPUT_LENGTH
+    //&      Method  GET_STRING_OUTPUT_LENGTH
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    static const int GET_BYTES_OUTPUT_LENGTH(const unsigned char* id_pBytes);
+    static const int GET_STRING_OUTPUT_LENGTH(const std::string id_string);
 
     //&---------------------------------------------------------------------*
     //&      Method  GET_CENTER_OFFSET
@@ -138,36 +118,20 @@ public:
 private:
 
     //&---------------------------------------------------------------------*
-    //&      Method  drawCharAtPos
-    //&---------------------------------------------------------------------*
-    //
-    //----------------------------------------------------------------------*
-    void drawCharAtPos(const char id_char, const int id_x, const int id_y,
-                       sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const;
-
-    //&---------------------------------------------------------------------*
-    //&      Method  drawCharAtPos
+    //&      Method  drawByteAtPos
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
     void drawByteAtPos(const unsigned char id_byte, const int id_x, const int id_y,
+                                sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const;
+
+    //&---------------------------------------------------------------------*
+    //&      Method  drawStringAtPos
+    //&---------------------------------------------------------------------*
+    //
+    //----------------------------------------------------------------------*
+    void drawStringAtPos(const std::string id_string, const int id_x, const int id_y,
                        sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const;
-
-    //&---------------------------------------------------------------------*
-    //&      Method  drawCharsAtPos
-    //&---------------------------------------------------------------------*
-    //
-    //----------------------------------------------------------------------*
-    void drawCharsAtPos(const char* id_pChar, const int id_x, const int id_y,
-                        sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const;
-
-    //&---------------------------------------------------------------------*
-    //&      Method  drawBytesAtPos
-    //&---------------------------------------------------------------------*
-    //
-    //----------------------------------------------------------------------*
-    void drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, const int id_y,
-                        sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const;
 
     //&---------------------------------------------------------------------*
     //&      Method  loadTexture
@@ -185,7 +149,8 @@ private:
 
 	sf::RenderWindow* m_pWindow = NULL;
 
-    const char* m_pStr = NULL;
+    //const char* m_pStr = NULL;
+    std::string m_string = "";
     int m_x = 0;
     int m_y = 0;
 
@@ -202,10 +167,10 @@ private:
 
     static const int MAX_CHARS_TO_PRINT = 1000;
 
-    static const char TAB = 0x09;
-    static const char LINE_FEED = 0x0A;
-    static const char CARRIAGE_RETURN = 0x0D;
-    static const char SPACE = 0x20;
+    static const unsigned char I = 0x69;
+    static const unsigned char TAB = 0x09;
+    static const unsigned char CARRIAGE_RETURN = 0x0D;
+    static const unsigned char SPACE = 0x20;
 
 };
 

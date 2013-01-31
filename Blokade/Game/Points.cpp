@@ -102,57 +102,57 @@ int Points::getPoints() {
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  getPointsAsChars
+//&      Method  getPointsAsString
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-char* Points::getPointsAsChars() {
-    return getIntAsChars(m_points);
+const std::string Points::getPointsAsString() {
+    return getIntAsString(m_points);
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  getTopPointsAsChars
+//&      Method  getTopPointsAsString
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-char* Points::getTopPointsAsChars() {
-    return getIntAsChars(m_topPoints);
+const std::string Points::getTopPointsAsString() {
+    return getIntAsString(m_topPoints);
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  getLinesAsChars
+//&      Method  getLinesAsString
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-char* Points::getLinesAsChars() {
-    return getIntAsChars(m_lines);
+const std::string Points::getLinesAsString() {
+    return getIntAsString(m_lines);
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  getTopLinesAsChars
+//&      Method  getTopLinesAsString
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-char* Points::getTopLinesAsChars() {
-    return getIntAsChars(m_topLines);
+const std::string Points::getTopLinesAsString() {
+    return getIntAsString(m_topLines);
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  getBlocksAsChars
+//&      Method  getBlocksAsString
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-char* Points::getBlocksAsChars() {
-    return getIntAsChars(m_blocks);
+const std::string Points::getBlocksAsString() {
+    return getIntAsString(m_blocks);
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  getLevelAsChars
+//&      Method  getLevelAsString
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-char* Points::getLevelAsChars() {
-    return getIntAsChars(m_level);
+const std::string Points::getLevelAsString() {
+    return getIntAsString(m_level);
 }
 
 //&---------------------------------------------------------------------*
@@ -165,11 +165,11 @@ const int Points::getLevel() {
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  getIntAsChars
+//&      Method  getIntAsString
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-char* Points::getIntAsChars(int id_int) {
+const std::string Points::getIntAsString(int id_int) {
     for (int i = m_digits; i < m_digits; i++) {
         m_pChars[i] = '0';
     }
@@ -192,7 +192,7 @@ char* Points::getIntAsChars(int id_int) {
             }
         }
     }
-    return  m_pChars;
+    return m_pChars;
 }
 
 //&---------------------------------------------------------------------*
@@ -295,7 +295,7 @@ void Points::updateTopLines() {
 //----------------------------------------------------------------------*
 void Points::updateLevel() {
     if (m_lineCountForLevel >= LINES_PER_LEVEL) {
-        m_level++;// = (int) floor(m_lines / 10.0f);
+        m_level++;
         m_lineCountForLevel -= LINES_PER_LEVEL;
     }
 }

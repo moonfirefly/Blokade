@@ -29,6 +29,7 @@
 #include <SFML/Graphics.hpp>
 #include "GFXMenuItem.hpp"
 #include "GFXFont.hpp"
+#include <string>
 #include "../ResourcePath.hpp"
 
 //&=========================================================================*
@@ -61,21 +62,14 @@ public:
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    bool init(const char* id_pLabel, const int id_tag);
+    bool init(const std::string id_string, const int id_tag);
 
     //&---------------------------------------------------------------------*
     //&      Method  init
     //&---------------------------------------------------------------------*
     //
     //----------------------------------------------------------------------*
-    bool init(const unsigned char* id_pLabel, const int id_tag);
-
-    //&---------------------------------------------------------------------*
-    //&      Method  init
-    //&---------------------------------------------------------------------*
-    //
-    //----------------------------------------------------------------------*
-    bool init(const char* id_pLabel, const int id_x, const int id_y, const int id_tag);
+    bool init(const std::string id_string, const int id_x, const int id_y, const int id_tag);
 
     //&---------------------------------------------------------------------*
     //&      Method  setPosition
@@ -140,7 +134,7 @@ private:
     static sf::Texture m_buttonsSheet;
     static bool m_init;
 
-    const char* m_pLabel = NULL;
+    std::string m_label = "";
     int m_labelXOffset = 0;
     static const int LABEL_Y_OFFSET = 23;
 

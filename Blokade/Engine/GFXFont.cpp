@@ -47,12 +47,12 @@ bool GFXFont::init(sf::RenderWindow& id_rWindow) {
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-bool GFXFont::init(const char* id_pChar) {
+bool GFXFont::init(const std::string id_string) {
     if (!loadTexture()) {
         return false;
     }
-    m_pStr = id_pChar;
-    m_outputLength = GET_CHARS_OUTPUT_LENGTH(m_pStr);
+    m_string = id_string;
+    m_outputLength = GET_STRING_OUTPUT_LENGTH(id_string);
     return true;
 }
 
@@ -67,50 +67,22 @@ void GFXFont::setPosition(const int id_x, const int id_y) {
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  drawCharAtPos
+//&      Method  drawStringAtPos
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-void GFXFont::drawCharAtPos(const char id_char, const int id_x, const int id_y) const {
-    drawCharAtPos(id_char, id_x, id_y, *m_pWindow, sf::RenderStates::Default);
+void GFXFont::drawStringAtPos(const std::string id_string, const int id_x, const int id_y) {
+    drawStringAtPos(id_string, id_x, id_y, *m_pWindow, sf::RenderStates::Default);
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  drawCharsAtPos
+//&      Method  drawStringAtPos
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-void GFXFont::drawCharsAtPos(const char* id_pChar, const int id_x, const int id_y) const {
-    drawCharsAtPos(id_pChar, id_x, id_y, *m_pWindow, sf::RenderStates::Default);
-}
-
-//&---------------------------------------------------------------------*
-//&      Method  drawBytesAtPos
-//&---------------------------------------------------------------------*
-//
-//----------------------------------------------------------------------*
-void GFXFont::drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, const int id_y) const {
-    drawBytesAtPos(id_pBytes, id_x, id_y, *m_pWindow, sf::RenderStates::Default);
-}
-
-//&---------------------------------------------------------------------*
-//&      Method  drawBytesAtPos
-//&---------------------------------------------------------------------*
-//
-//----------------------------------------------------------------------*
-void GFXFont::drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, const int id_y, const int id_centerWidth) const {
-    int offset = GET_CENTER_OFFSET(id_centerWidth, GET_BYTES_OUTPUT_LENGTH(id_pBytes));
-    drawBytesAtPos(id_pBytes, id_x + offset, id_y, *m_pWindow, sf::RenderStates::Default);
-}
-
-//&---------------------------------------------------------------------*
-//&      Method  drawCharAtPos
-//&---------------------------------------------------------------------*
-//
-//----------------------------------------------------------------------*
-void GFXFont::drawCharAtPos(const char id_char, const int id_x, const int id_y,
-                            sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const {
-    drawByteAtPos(id_char, id_x, id_y, id_rTarget, id_states);
+void GFXFont::drawStringAtPos(const std::string id_string, const int id_x, const int id_y, const int id_centerWidth) {
+    int offset = GET_CENTER_OFFSET(id_centerWidth, GET_STRING_OUTPUT_LENGTH(id_string));
+    drawStringAtPos(id_string, id_x + offset, id_y, *m_pWindow, sf::RenderStates::Default);
 }
 
 //&---------------------------------------------------------------------*
@@ -148,34 +120,24 @@ void GFXFont::drawByteAtPos(const unsigned char id_byte, const int id_x, const i
 }
 
 //&---------------------------------------------------------------------*
-//&      Method  drawCharsAtPos
-//&---------------------------------------------------------------------*
-//
-//----------------------------------------------------------------------*
-void GFXFont::drawCharsAtPos(const char* id_pChar, const int id_x, const int id_y,
-                             sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const {
-    drawBytesAtPos((unsigned char*)id_pChar, id_x, id_y, id_rTarget, id_states);
-}
-
-//&---------------------------------------------------------------------*
 //&      Method  drawBytesAtPos
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-void GFXFont::drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, const int id_y,
-                             sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const {
+void GFXFont::drawStringAtPos(const std::string id_string, const int id_x, const int id_y,
+                                 sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const {
     int offset = 0;
     int line = 0;
     int shift = 0;
     bool lastCharWasSmall = false;
-    for (int charIdx = 0; *(id_pBytes + charIdx) != 0 && charIdx < MAX_CHARS_TO_PRINT; charIdx++) {
+    int length = static_cast<int>(id_string.size());
+    for (int i = 0; i < length && i < MAX_CHARS_TO_PRINT; i++) {
         shift = 0;
-        unsigned char value = *(id_pBytes + charIdx);
+        unsigned char value = id_string[i];
         switch (value) {
             case TAB:
                 offset += 3;
                 break;
-            case LINE_FEED:
             case CARRIAGE_RETURN:
                 line++;
                 offset = -1;
@@ -184,7 +146,7 @@ void GFXFont::drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, con
                 if (lastCharWasSmall) {
                     shift = 5;
                 }
-                else if (value == 'i') {
+                else if (value == I) {
                     shift = 2;
                 }
                 if (value != SPACE) {
@@ -196,7 +158,7 @@ void GFXFont::drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, con
                 }
                 break;
         }
-        if (value == 'i') {
+        if (value == I) {
             lastCharWasSmall = true;
         }
         else {
@@ -211,28 +173,19 @@ void GFXFont::drawBytesAtPos(const unsigned char* id_pBytes, const int id_x, con
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-const int GFXFont::GET_CHARS_OUTPUT_LENGTH(const char* id_pChar) {
-    return GET_BYTES_OUTPUT_LENGTH((unsigned char*)id_pChar);
-}
-
-//&---------------------------------------------------------------------*
-//&      Method  getCharsOutputLength
-//&---------------------------------------------------------------------*
-//
-//----------------------------------------------------------------------*
-const int GFXFont::GET_BYTES_OUTPUT_LENGTH(const unsigned char* id_pBytes) {
+const int GFXFont::GET_STRING_OUTPUT_LENGTH(const std::string id_string) {
     int offset = 0;
     int shift = 0;
     bool lastCharWasSmall = false;
     std::list<int> linesLen;
-    for (int charIdx = 0; *(id_pBytes + charIdx) != 0 && charIdx < MAX_CHARS_TO_PRINT; charIdx++) {
+    int length = static_cast<int>(id_string.size());
+    for (int i = 0; i < length && i < MAX_CHARS_TO_PRINT; i++) {
         shift = 0;
-        unsigned char value = *(id_pBytes + charIdx);
+        unsigned char value = id_string[i];
         switch (value) {
             case TAB:
                 offset += 3 * (CHAR_PIXEL_WIDTH - SPACING - shift);
                 break;
-            case LINE_FEED:
             case CARRIAGE_RETURN:
                 linesLen.push_back(offset);
                 offset = 0;
@@ -241,12 +194,12 @@ const int GFXFont::GET_BYTES_OUTPUT_LENGTH(const unsigned char* id_pBytes) {
                 if (lastCharWasSmall) {
                     shift = 5;
                 }
-                else if (value == 'i') {
+                else if (value == I) {
                     shift = 2;
                 }
                 break;
         }
-        if (value == 'i') {
+        if (value == I) {
             lastCharWasSmall = true;
         }
         else {
@@ -300,8 +253,8 @@ bool GFXFont::loadTexture() {
 //
 //----------------------------------------------------------------------*
 void GFXFont::draw(sf::RenderTarget& id_rTarget, sf::RenderStates id_states) const {
-    if (m_pStr != NULL) {
-        drawCharsAtPos(m_pStr, m_x, m_y, id_rTarget, id_states);
+    if (m_string != "") {
+        drawStringAtPos(m_string, m_x, m_y, id_rTarget, id_states);
     }
 }
 
