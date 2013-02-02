@@ -17,12 +17,17 @@ I wrote the code and made the graphics except the <a href="http://www.ms-studio.
 the sound effects with <a href="http://www.bfxr.net/">Bfxr</a>. Both background tunes are free loops I 
 got from <a href="http://www.joshuahardin.com/free_music_loops.php">Joshua Hardin</a>.
 
-Open the project in Xcode 4.5.2 with Quartz and SFML 2.0 installed 
+Open the project in Xcode 4.5.2 and up with Quartz and SFML 2.0 installed 
 and the game should compile and run right away. 
 
 The Code::Blocks project is also provided so you can compile on Windows.
 Install the one bundled with MinGW and link with library MinGW TDM GCC 4.7.1 32bit
 found on <a href="http://sfml.my-gate.net/nightly/">SFML nightly builds</a> for best results.
+
+Linux Code::Blocks project created and tested on Ubuntu 12.10. You can
+link with the <a href="http://www.sfml-dev.org/download.php">official SMFL build</a> for Linux but you might need to install
+older libraries to get it to compile. The sound seems a little off
+on Ubuntu but it might be the vm.
 
 Video
 -----
@@ -54,6 +59,10 @@ Windows
     so no extra download required.
 
     Props to <a href="https://github.com/eXpl0it3r">eXpl0it3r</a> for the port :)
+
+Linux
+
+	Soon..
 
 Controls
 --------
