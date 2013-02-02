@@ -31,6 +31,10 @@
 #include <iostream>
 #include "../ResourcePath.hpp"
 
+#if defined( BLOKADE_PLATFORM_WINDOWS )
+	#include <windows.h>
+#endif
+
 //&=========================================================================*
 //&      Class  FileAccess
 //&=========================================================================*

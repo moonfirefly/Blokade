@@ -46,5 +46,6 @@ std::string resourcePath(void)
 
 ////////////////////////////////////////////////////////////
 std::string getHomePath() {
-    return std::string( std::getenv( "APPDATA" ) );
+    const char *env = getenv( "APPDATA" );
+    return std::string( env );
 }
