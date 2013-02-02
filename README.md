@@ -18,8 +18,11 @@ the sound effects with <a href="http://www.bfxr.net/">Bfxr</a>. Both background 
 got from <a href="http://www.joshuahardin.com/free_music_loops.php">Joshua Hardin</a>.
 
 Open the project in Xcode 4.5.2 with Quartz and SFML 2.0 installed 
-and the game should compile and run right away. The Code::Blocks
-project is also provided so you can compile on Windows.
+and the game should compile and run right away. 
+
+The Code::Blocks project is also provided so you can compile on Windows.
+Install the one bundled with MinGW and link with library MinGW TDM GCC 4.7.1 32bit
+found on <a href="http://sfml.my-gate.net/nightly/">SFML nightly builds</a> for best results.
 
 Video
 -----
@@ -29,13 +32,15 @@ See the game running <a href="https://vimeo.com/57818102">here</a>.
 Binaries
 --------
 
-Download and play the pre-compiled game: 
-    
+<a href="https://www.dropbox.com/sh/xsywbqqtoe223zd/Z2tWZZ1g_-">Download</a> and play the pre-compiled game on OSX or Windows.
+Aussi disponible en français.
+
+Requirements
+------------
+
 OSX
 
-  * <a href="https://www.dropbox.com/s/c7537decwvfivqz/Blokade.zip">https://www.dropbox.com/s/c7537decwvfivqz/Blokade.zip</a>
-
-    Requires to install Quartz (OSX 10.6 and later): 
+    Requires to install Quartz (OSX 10.6 and later):
     <a href="http://xquartz.macosforge.org/">http://xquartz.macosforge.org/</a>
 
     and SFML 2.0 libraries for Mac OSX (use the installer): 
@@ -45,12 +50,10 @@ OSX
 
 Windows
 
-  * <a href="http://www.sfmluploads.org/file/166/download">http://www.sfmluploads.org/file/166/download</a>
-
     The windows build was with compiled with the necessary libraries
     so no extra download required.
-    
-    Props to <a href="https://github.com/eXpl0it3r">eXpl0it3r</a> for providing the windows executable :)
+
+    Props to <a href="https://github.com/eXpl0it3r">eXpl0it3r</a> for the port :)
 
 Controls
 --------
