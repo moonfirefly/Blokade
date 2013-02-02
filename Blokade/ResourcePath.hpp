@@ -30,6 +30,8 @@
 	#include "OSXResourcePath.hpp"
 #elif defined( BLOKADE_PLATFORM_WINDOWS )
 	#include "Windows/WindowsResourcePath.hpp"
+#elif defined( BLOKADE_PLATFORM_LINUX )
+	#include "Linux/LinuxResourcePath.hpp"
 #else
 	#error "Unsupported Platform"
 #endif

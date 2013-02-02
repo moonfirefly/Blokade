@@ -69,6 +69,10 @@ std::string FileAccess::getSettingsFilePath() {
 					ERROR_ALREADY_EXISTS == GetLastError()) {
 					filePath = moonPath + "/blockade.dat";
 				}
+            #elif defined( BLOKADE_PLATFORM_LINUX )
+				if (mkdir(moonPath.c_str(), S_IRWXU | S_IRWXG) == 0) {
+					filePath = moonPath + "/blokade.dat";
+				}
             #endif
         }
     }
