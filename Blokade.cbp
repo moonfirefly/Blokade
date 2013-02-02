@@ -14,6 +14,7 @@
 				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DBLOKADE_PLATFORM_WINDOWS" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-s-d" />
@@ -41,49 +42,60 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++11" />
 			<Add option="-Wall" />
 			<Add option="-DSFML_STATIC" />
 			<Add option="-DBLOKADE_PLATFORM_WINDOWS" />
+			<Add option="-DBLOKADE_LANGUAGE_EN" />
 			<Add directory="C:/Dev/Automation/SFML-Builds/MinGW472x32/include" />
 		</Compiler>
 		<Linker>
 			<Add directory="C:/Dev/Automation/SFML-Builds/MinGW472x32/lib/static-std" />
 		</Linker>
-		<Unit filename="Engine/GFXBean.cpp" />
-		<Unit filename="Engine/GFXBean.hpp" />
-		<Unit filename="Engine/GFXEngine.cpp" />
-		<Unit filename="Engine/GFXEngine.hpp" />
-		<Unit filename="Engine/GFXFont.cpp" />
-		<Unit filename="Engine/GFXFont.hpp" />
-		<Unit filename="Engine/GFXMenu.cpp" />
-		<Unit filename="Engine/GFXMenu.hpp" />
-		<Unit filename="Engine/GFXMenuButton.cpp" />
-		<Unit filename="Engine/GFXMenuButton.hpp" />
-		<Unit filename="Engine/GFXMenuItem.hpp" />
-		<Unit filename="Engine/GFXMenuSelector.cpp" />
-		<Unit filename="Engine/GFXMenuSelector.hpp" />
-		<Unit filename="Engine/GFXRuntime.cpp" />
-		<Unit filename="Engine/GFXRuntime.hpp" />
-		<Unit filename="Game/BlokadeGame.cpp" />
-		<Unit filename="Game/BlokadeGame.hpp" />
-		<Unit filename="Game/FileAccess.cpp" />
-		<Unit filename="Game/FileAccess.hpp" />
-		<Unit filename="Game/Points.cpp" />
-		<Unit filename="Game/Points.hpp" />
-		<Unit filename="Game/Shapes.hpp" />
-		<Unit filename="Game/SoundMngr.cpp" />
-		<Unit filename="Game/SoundMngr.hpp" />
-		<Unit filename="Game/i18n.cpp" />
-		<Unit filename="Game/i18n.hpp" />
-		<Unit filename="ResourcePath.hpp" />
-		<Unit filename="Windows/WindowsResourcePath.cpp" />
-		<Unit filename="Windows/WindowsResourcePath.hpp" />
-		<Unit filename="main.cpp" />
+		<Unit filename="Blokade/Engine/GFXBean.cpp" />
+		<Unit filename="Blokade/Engine/GFXBean.hpp" />
+		<Unit filename="Blokade/Engine/GFXEngine.cpp" />
+		<Unit filename="Blokade/Engine/GFXEngine.hpp" />
+		<Unit filename="Blokade/Engine/GFXFont.cpp" />
+		<Unit filename="Blokade/Engine/GFXFont.hpp" />
+		<Unit filename="Blokade/Engine/GFXMenu.cpp" />
+		<Unit filename="Blokade/Engine/GFXMenu.hpp" />
+		<Unit filename="Blokade/Engine/GFXMenuButton.cpp" />
+		<Unit filename="Blokade/Engine/GFXMenuButton.hpp" />
+		<Unit filename="Blokade/Engine/GFXMenuItem.hpp" />
+		<Unit filename="Blokade/Engine/GFXMenuSelector.cpp" />
+		<Unit filename="Blokade/Engine/GFXMenuSelector.hpp" />
+		<Unit filename="Blokade/Engine/GFXRuntime.cpp" />
+		<Unit filename="Blokade/Engine/GFXRuntime.hpp" />
+		<Unit filename="Blokade/Game/BlokadeGame.cpp" />
+		<Unit filename="Blokade/Game/BlokadeGame.hpp" />
+		<Unit filename="Blokade/Game/FileAccess.cpp" />
+		<Unit filename="Blokade/Game/FileAccess.hpp" />
+		<Unit filename="Blokade/Game/Points.cpp" />
+		<Unit filename="Blokade/Game/Points.hpp" />
+		<Unit filename="Blokade/Game/Shapes.hpp" />
+		<Unit filename="Blokade/Game/SoundMngr.cpp" />
+		<Unit filename="Blokade/Game/SoundMngr.hpp" />
+		<Unit filename="Blokade/Game/i18n.cpp" />
+		<Unit filename="Blokade/Game/i18n.hpp" />
+		<Unit filename="Blokade/ResourcePath.hpp" />
+		<Unit filename="Blokade/Windows/WindowsResourcePath.cpp" />
+		<Unit filename="Blokade/Windows/WindowsResourcePath.hpp" />
+		<Unit filename="Blokade/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
 			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
