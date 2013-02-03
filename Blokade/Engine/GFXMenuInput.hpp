@@ -33,7 +33,7 @@
 #include "GFXFont.hpp"
 #include "GFXBean.hpp"
 #include "../ResourcePath.hpp"
-#include "i18n.hpp"
+#include "../Game/i18n.hpp"
 
 //&=========================================================================*
 //&      Class  GFXMenuInput

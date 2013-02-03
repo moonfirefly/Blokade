@@ -40,7 +40,7 @@
 #include "../ResourcePath.hpp"
 #include "i18n.hpp"
 #include "FileAccess.hpp"
-#include "GFXMenuInput.hpp"
+#include "../Engine/GFXMenuInput.hpp"
 
 //&=========================================================================*
 //&      Class  game

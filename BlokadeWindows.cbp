@@ -62,6 +62,8 @@
 		<Unit filename="Blokade/Engine/GFXMenu.hpp" />
 		<Unit filename="Blokade/Engine/GFXMenuButton.cpp" />
 		<Unit filename="Blokade/Engine/GFXMenuButton.hpp" />
+		<Unit filename="Blokade/Engine/GFXMenuInput.cpp" />
+		<Unit filename="Blokade/Engine/GFXMenuInput.hpp" />
 		<Unit filename="Blokade/Engine/GFXMenuItem.hpp" />
 		<Unit filename="Blokade/Engine/GFXMenuSelector.cpp" />
 		<Unit filename="Blokade/Engine/GFXMenuSelector.hpp" />
