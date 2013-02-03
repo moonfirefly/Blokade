@@ -1,6 +1,6 @@
 <blockquote><pre>
 ===================================================================
-                         Blokade v0.9.2 
+                         Blokade v0.9.3 
 ===================================================================
 
                    Copyright 2013 moonfirefy
@@ -86,8 +86,9 @@ No mouse support, only keyboard input at this time.
 Other
 -----
 
-High score and volume settings are saved in the home directory. 
-Save is silently disabled if the first save attempt fails.
+Top 5 high scores, top 5 high lines and volume settings are saved 
+in the home directory. Save is silently disabled if the first 
+save attempt fails.
 
 License
 -------
