@@ -46,10 +46,26 @@ class FileAccess {
 // ======== P U B L I C ========
 public:
 
+    static const int MAX_NAME_CHARS = 6;
+    static const int MAX_TOP_SCORES = 5;
+
+    struct TopScore {
+        char name[MAX_NAME_CHARS + 1]; // n characters + '\0'
+        int score;
+    };
+
+    struct TopLines {
+        char name[MAX_NAME_CHARS + 1];
+        int lines;
+    };
+    
     struct Data {
-        int m_highScore = 0;
-        int m_soundVolume = -1;
-        int m_musicVolume = -1;
+        int headerOne = 0;
+        int headerTwo = 0;
+        int soundVolume = -1;
+        int musicVolume = -1;
+        TopScore topScores[MAX_TOP_SCORES];
+        TopLines topLines[MAX_TOP_SCORES];
     };
 
     //&---------------------------------------------------------------------*
@@ -106,6 +122,9 @@ private:
     std::string getSettingsFilePath();
 
     Data m_readData;
+    
+    static const int HEADER_ONE = 12345;
+    static const int HEADER_TWO = 98765;
 
 };
 

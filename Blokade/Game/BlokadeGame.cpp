@@ -67,9 +67,11 @@ bool BlokadeGame::init() {
     // Main menu
     m_mainMenuStart.init(i18n::START, BUTTON::START);
     m_mainMenuOptions.init(i18n::OPTIONS, BUTTON::OPTIONS);
+    m_mainMenuScores.init(i18n::SCORES, BUTTON::SCORES);
     m_mainMenuExit.init(i18n::EXIT, BUTTON::EXIT);
     m_mainMenu.addItem(&m_mainMenuStart);
     m_mainMenu.addItem(&m_mainMenuOptions);
+    m_mainMenu.addItem(&m_mainMenuScores);
     m_mainMenu.addItem(&m_mainMenuExit);
     m_mainMenu.setPosition((1024 - 338) / 2, 290);
     
@@ -82,6 +84,10 @@ bool BlokadeGame::init() {
     m_optionsMenu.addItem(&m_optionsMenuVolumeMusic);
     m_optionsMenu.addItem(&m_optionsMenuBack);
     m_optionsMenu.setPosition((1024 - 650) / 2, 290);
+
+    m_scoresMenuBack.init(i18n::BACK, BUTTON::BACK);
+    m_scoresMenu.addItem(&m_scoresMenuBack);
+    m_scoresMenu.setPosition((1024 - 338) / 2, 580);
 
     m_levelMenuLevel.init(i18n::LEVEL, BUTTON::LEVEL, m_points.getLevelBeans());
     m_levelMenuLevel.setSelectedIndex(0); // level 0
@@ -108,6 +114,11 @@ bool BlokadeGame::init() {
     m_gameMenuOver.addItem(&m_gameMenuOverQuit);
     m_gameMenuOver.setPosition((1024 - 338) / 2, 310);
 
+    // In-game New high score menu
+    m_gameMenuNewScoreInput.init(i18n::NAME, BUTTON::NAME, FileAccess::MAX_NAME_CHARS);
+    m_gameMenuNewScore.addItem(&m_gameMenuNewScoreInput);
+    m_gameMenuNewScore.setPosition((1024 - 650) / 2, 380);
+    
     // Initialize score output
     m_points.setNbDigits(7);
     m_points.setNoLeadingZeros(true);
@@ -132,11 +143,12 @@ bool BlokadeGame::init() {
 //----------------------------------------------------------------------*
 void BlokadeGame::loadSettings() {
     m_settings = m_fileAccess.readData(); // returns defaults if read fails
-    m_soundMngr.setSoundVolume(m_soundMngr.intToVolume(m_settings->m_soundVolume));
-    m_optionsMenuVolumeSound.setSelectedIndex(m_settings->m_soundVolume);
-    m_soundMngr.setMusicVolume(m_soundMngr.intToVolume(m_settings->m_musicVolume));
-    m_optionsMenuVolumeMusic.setSelectedIndex(m_settings->m_musicVolume);
-    m_points.setTopScore(m_settings->m_highScore);
+    m_points.setSettings(m_settings);
+    
+    m_soundMngr.setSoundVolume(m_soundMngr.intToVolume(m_settings->soundVolume));
+    m_optionsMenuVolumeSound.setSelectedIndex(m_settings->soundVolume);
+    m_soundMngr.setMusicVolume(m_soundMngr.intToVolume(m_settings->musicVolume));
+    m_optionsMenuVolumeMusic.setSelectedIndex(m_settings->musicVolume);
 }
 
 //&---------------------------------------------------------------------*
@@ -145,17 +157,17 @@ void BlokadeGame::loadSettings() {
 //
 //----------------------------------------------------------------------*
 void BlokadeGame::saveSettings(const bool id_saveTopScore) {
-    int topScore = m_settings->m_highScore;
-    if (id_saveTopScore) {
-        topScore = m_points.getTopScore();
+    if (!id_saveTopScore) {
+        if (m_settings->musicVolume == m_soundMngr.getMusicVolume() &&
+                m_settings->soundVolume == m_soundMngr.getSoundVolume()) {
+            // nothing to save
+            return;
+        }
     }
     // don't try save to save again if it failed the first time
-    if (m_settingsSaveSuccess && (m_settings->m_highScore != topScore ||
-            m_settings->m_musicVolume != m_soundMngr.getMusicVolume() ||
-            m_settings->m_soundVolume != m_soundMngr.getSoundVolume())) {
-        m_settings->m_highScore = topScore;
-        m_settings->m_musicVolume = m_soundMngr.getMusicVolume();
-        m_settings->m_soundVolume = m_soundMngr.getSoundVolume();
+    if (m_settingsSaveSuccess) {
+        m_settings->musicVolume = m_soundMngr.getMusicVolume();
+        m_settings->soundVolume = m_soundMngr.getSoundVolume();
         m_settingsSaveSuccess = m_fileAccess.writeData(m_settings);
     }
 }
@@ -171,7 +183,7 @@ void BlokadeGame::reset() {
     m_gameSubState = GAME_SUB_STATE::NORMAL;
     m_mainMenu.selectItemByTag(BUTTON::START);
     m_soundMngr.playMusic(SoundMngr::MUSIC::MAIN_MENU);
-    m_points.setTopScore(m_settings->m_highScore);
+   // m_points.setTopScore(m_settings->m_highScore);
 }
 
 //&---------------------------------------------------------------------*
@@ -182,13 +194,16 @@ void BlokadeGame::reset() {
 void BlokadeGame::input() {
     switch (m_gamestate) {
         case GAME_STATE::MAIN_MENU:
-            if (m_runtime.isKeyPressed(GFXRuntime::KEY::ESCAPE)) {
+            if (m_runtime.getKeyPressed() == sf::Keyboard::Key::Escape) {
                 switch (m_gameSubState) {
                     case GAME_SUB_STATE::NORMAL:
                         shutdown();
                         break;
                     case GAME_SUB_STATE::OPTIONS_MENU:
                         saveSettings(false);
+                        m_gameSubState = GAME_SUB_STATE::NORMAL;
+                        break;
+                    case GAME_SUB_STATE::SCORES_MENU:
                         m_gameSubState = GAME_SUB_STATE::NORMAL;
                         break;
                     case GAME_SUB_STATE::LEVEL_MENU:
@@ -205,7 +220,7 @@ void BlokadeGame::input() {
             switch (m_gameSubState) {
                 case GAME_SUB_STATE::NORMAL:
                     if (m_isPaused) {
-                        if (m_runtime.isKeyPressed(GFXRuntime::KEY::ESCAPE)) {
+                        if (m_runtime.getKeyPressed() == sf::Keyboard::Key::Escape) {
                             resume();
                         }
                     }
@@ -214,7 +229,7 @@ void BlokadeGame::input() {
                     }
                     break;
                 case GAME_SUB_STATE::OPTIONS_MENU:
-                    if (m_runtime.isKeyPressed(GFXRuntime::KEY::ESCAPE)) {
+                    if (m_runtime.getKeyPressed() == sf::Keyboard::Key::Escape) {
                         saveSettings(false);
                         m_gameSubState = GAME_SUB_STATE::NORMAL;
                     }
@@ -248,7 +263,7 @@ void BlokadeGame::resetGameInput() {
 //
 //----------------------------------------------------------------------*
 void BlokadeGame::updateGameInput() {
-    if (m_runtime.isKeyPressed(GFXRuntime::KEY::ESCAPE)) {
+    if (m_runtime.getKeyPressed() == sf::Keyboard::Key::Escape) {
         pause();
     }
     else {
@@ -312,6 +327,9 @@ void BlokadeGame::update() {
                 case GAME_SUB_STATE::OPTIONS_MENU:
                     updateOptionsMenu();
                     break;
+                case GAME_SUB_STATE::SCORES_MENU:
+                    updateHighScoresMenu();
+                    break;
                 case GAME_SUB_STATE::LEVEL_MENU:
                     updateLevelsMenu();
                     break;
@@ -349,6 +367,9 @@ void BlokadeGame::update() {
                 case GAME_SUB_STATE::OPTIONS_MENU:
                     updateOptionsMenu();
                     break;
+                case GAME_SUB_STATE::NEW_SCORE_MENU:
+                    updateNewScoreMenu();
+                    break;
                 default:
                     break;
             }
@@ -356,6 +377,39 @@ void BlokadeGame::update() {
 
         default:
             break;
+    }
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  updateHighScoresMenu
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void BlokadeGame::updateHighScoresMenu() {
+    m_scoresMenu.update(&m_runtime);
+    if (m_scoresMenu.getPressedItem() != NULL) {
+        switch ((*m_scoresMenu.getPressedItem()).getTag()) {
+            case BUTTON::BACK:
+                m_gameSubState = GAME_SUB_STATE::NORMAL;
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  updateNewScoreMenu
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void BlokadeGame::updateNewScoreMenu() {
+    m_gameMenuNewScore.update(&m_runtime);
+    if (m_gameMenuNewScoreInput.getInputFinished()) {
+        m_gameSubState = GAME_SUB_STATE::DEAD;
+        m_gameMenuOver.selectItemByTag(BUTTON::RESTART);
+        m_points.resortTopScores(m_gameMenuNewScoreInput.getInputValue());
+        saveSettings(true);
     }
 }
 
@@ -645,6 +699,10 @@ void BlokadeGame::updateMainMenu() {
                 m_gameSubState = GAME_SUB_STATE::OPTIONS_MENU;
                 m_optionsMenu.selectItemByTag(BUTTON::SOUND);
                 break;
+            case BUTTON::SCORES:
+                m_gameSubState = GAME_SUB_STATE::SCORES_MENU;
+                m_scoresMenu.selectItemByTag(BUTTON::BACK);
+                break;
             case BUTTON::EXIT:
                 shutdown();
                 break;
@@ -854,7 +912,7 @@ void BlokadeGame::newGame() {
     startNewShape();
     
     m_points.reset(m_levelMenuLevel.getSelectedValue()->getValue());
-    m_points.setTopScore(m_settings->m_highScore);
+  //  m_points.setTopScore(m_settings->m_highScore);
     
     for (int i = 0; i <= m_points.getLevel(); i++) {
         m_previousLevel = 0;
@@ -870,10 +928,16 @@ void BlokadeGame::newGame() {
 //
 //----------------------------------------------------------------------*
 void BlokadeGame::die() {
-    m_gameSubState = GAME_SUB_STATE::DEAD; 
     m_soundMngr.playSound(SoundMngr::SOUND::DIED);
-    m_gameMenuOver.selectItemByTag(BUTTON::RESTART);
-    saveSettings(true);
+
+    if (m_points.getLowestTopScoreBeaten() || m_points.getLowestTopLinesBeaten()) {
+        m_gameMenuNewScoreInput.reset(false);
+        m_gameSubState = GAME_SUB_STATE::NEW_SCORE_MENU;
+    }
+    else {
+        m_gameSubState = GAME_SUB_STATE::DEAD;
+        m_gameMenuOver.selectItemByTag(BUTTON::RESTART);
+    }
 }
 
 //&---------------------------------------------------------------------*
@@ -947,6 +1011,9 @@ void BlokadeGame::render() {
                 case GAME_SUB_STATE::OPTIONS_MENU:
                     renderOptionsMenu();
                     break;
+                case GAME_SUB_STATE::SCORES_MENU:
+                    renderHighScoresMenu();
+                    break;
                 case GAME_SUB_STATE::LEVEL_MENU:
                     renderLevelsMenu();
                     break;
@@ -960,6 +1027,33 @@ void BlokadeGame::render() {
         default:
             break;
     }
+
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  renderHighScoresMenu
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void BlokadeGame::renderHighScoresMenu() {
+    m_runtime.getWindow()->draw(m_menuBackgrndSprite);
+    m_runtime.getWindow()->draw(m_scoresMenu);
+
+    for (int i = 0; i < FileAccess::MAX_TOP_SCORES; i++) {
+        if (m_settings->topScores[i].score > 0) {
+            m_font.drawStringAtPos(m_settings->topScores[i].name, 40, 302 + (i * (GFXFont::CHAR_PIXEL_HEIGHT - 10)));
+            m_font.drawStringAtPos(m_points.getIntAsString(m_settings->topScores[i].score), 260, 302 + (i * (GFXFont::CHAR_PIXEL_HEIGHT - 10)));
+        }
+        if (m_settings->topLines[i].lines > 0) {
+            m_font.drawStringAtPos(m_settings->topLines[i].name, 510 + 50, 302 + (i * (GFXFont::CHAR_PIXEL_HEIGHT - 10)));
+            m_font.drawStringAtPos(m_points.getIntAsString(m_settings->topLines[i].lines), 510 + 250, 302 + (i * (GFXFont::CHAR_PIXEL_HEIGHT - 10)));
+        }
+    }
+
+    m_font.setColor(sf::Color::Cyan);
+    m_font.drawStringAtPos(i18n::TOP_SCORES, 40, 246, 425);
+    m_font.drawStringAtPos(i18n::TOP_LINES, 560, 246, 420);
+    m_font.resetColor();
 
 }
 
@@ -1000,14 +1094,24 @@ void BlokadeGame::renderGame() {
     }
     
     // Display game score
+    if (m_points.getLowestTopLinesBeaten() && m_gameSubState == GAME_SUB_STATE::NEW_SCORE_MENU) {
+        m_font.setColor(sf::Color::Yellow);
+    }
     m_font.drawStringAtPos(i18n::LINES, 38, 59, GAME_LABEL_CENTER_WIDTH);
     m_font.drawStringAtPos(m_points.getLinesAsString(), 58, 135);
-    m_font.drawStringAtPos(i18n::LEVEL, 38, 235, GAME_LABEL_CENTER_WIDTH);
-    m_font.drawStringAtPos(m_points.getLevelAsString(), 58, 310);
-    m_font.drawStringAtPos(i18n::TOP, 726, 59, GAME_LABEL_CENTER_WIDTH);
-    m_font.drawStringAtPos(m_points.getTopPointsAsString(), 742, 135);
+    m_font.resetColor();
+
+    if (m_points.getLowestTopScoreBeaten() && m_gameSubState == GAME_SUB_STATE::NEW_SCORE_MENU) {
+        m_font.setColor(sf::Color::Yellow);
+    }
     m_font.drawStringAtPos(i18n::SCORE, 726, 235, GAME_LABEL_CENTER_WIDTH);
     m_font.drawStringAtPos(m_points.getPointsAsString(), 742, 310);
+    m_font.resetColor();
+    
+    m_font.drawStringAtPos(i18n::TOP, 726, 59, GAME_LABEL_CENTER_WIDTH);
+    m_font.drawStringAtPos(m_points.getTopPointsAsString(), 742, 135);
+    m_font.drawStringAtPos(i18n::LEVEL, 38, 235, GAME_LABEL_CENTER_WIDTH);
+    m_font.drawStringAtPos(m_points.getLevelAsString(), 58, 310);
     m_font.drawStringAtPos(i18n::NEXT, 726, 413, GAME_LABEL_CENTER_WIDTH);
     
     // Display next shape
@@ -1032,6 +1136,10 @@ void BlokadeGame::renderGame() {
             case DEAD:
                 m_font.drawStringAtPos(i18n::GAME_OVER, 375, 20, 280);
                 m_runtime.getWindow()->draw(m_gameMenuOver);
+                break;
+            case NEW_SCORE_MENU:
+                m_font.drawStringAtPos(i18n::NEW_SCORE, 375, 20, 280);
+                m_runtime.getWindow()->draw(m_gameMenuNewScore);
                 break;
             default:
                 break;

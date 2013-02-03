@@ -38,6 +38,7 @@
 		028F414A16B65349002F2501 /* shapeInPlace.wav in Resources */ = {isa = PBXBuildFile; fileRef = 028F413C16B65349002F2501 /* shapeInPlace.wav */; };
 		028F414B16B65349002F2501 /* shapeMove.wav in Resources */ = {isa = PBXBuildFile; fileRef = 028F413D16B65349002F2501 /* shapeMove.wav */; };
 		028F414E16B65375002F2501 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 028F414C16B65375002F2501 /* main.cpp */; };
+		02F02F2816BDA7CC0046FDDD /* GFXMenuInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02F02F2616BDA7CC0046FDDD /* GFXMenuInput.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,8 @@
 		028F413D16B65349002F2501 /* shapeMove.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shapeMove.wav; path = Resources/shapeMove.wav; sourceTree = "<group>"; };
 		028F414C16B65375002F2501 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		028F414D16B65375002F2501 /* ResourcePath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
+		02F02F2616BDA7CC0046FDDD /* GFXMenuInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GFXMenuInput.cpp; path = Engine/GFXMenuInput.cpp; sourceTree = "<group>"; };
+		02F02F2716BDA7CC0046FDDD /* GFXMenuInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GFXMenuInput.hpp; path = Engine/GFXMenuInput.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +208,8 @@
 				028F410E16B65320002F2501 /* GFXMenu.hpp */,
 				028F410F16B65320002F2501 /* GFXMenuButton.cpp */,
 				028F411016B65320002F2501 /* GFXMenuButton.hpp */,
+				02F02F2616BDA7CC0046FDDD /* GFXMenuInput.cpp */,
+				02F02F2716BDA7CC0046FDDD /* GFXMenuInput.hpp */,
 				028F411116B65320002F2501 /* GFXMenuItem.hpp */,
 				028F411216B65320002F2501 /* GFXMenuSelector.cpp */,
 				028F411316B65320002F2501 /* GFXMenuSelector.hpp */,
@@ -331,6 +336,7 @@
 				028F412C16B6532A002F2501 /* SoundMngr.cpp in Sources */,
 				028F412F16B6533B002F2501 /* OSXResourcePath.mm in Sources */,
 				028F414E16B65375002F2501 /* main.cpp in Sources */,
+				02F02F2816BDA7CC0046FDDD /* GFXMenuInput.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

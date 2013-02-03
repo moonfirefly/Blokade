@@ -62,17 +62,42 @@ void Points::reset(const int id_level) {
     m_lineCountForLevel = 0;
     m_pChars[0] = '\0';
     m_pChars[MAX_DIGITS] = '\0';
-}
 
+    m_lowestTopScoreBeaten = false;
+    m_lowestTopLinesBeaten = false;
+    m_lowestPointsToBeat = 0;
+    m_lowestLinesToBeat = 0;
+    m_topPoints = 0;
+    m_topLines = 0;
+    
+    if (m_pSettings != NULL) {
+        m_topPoints = m_pSettings->topScores[0].score;
+        m_topLines = m_pSettings->topLines[0].lines;
+
+        m_lowestPointsToBeat = m_pSettings->topScores[FileAccess::MAX_TOP_SCORES - 1].score;
+        m_lowestLinesToBeat = m_pSettings->topLines[FileAccess::MAX_TOP_SCORES - 1].lines;
+        
+        /*
+        for (int i = FileAccess::MAX_TOP_SCORES - 1; i >= 0; i--) {
+            if (m_lowestPointsToBeat == 0 && m_pSettings->topScores[i].score > 0) {
+                m_lowestPointsToBeat = m_pSettings->topScores[i].score;
+            }
+            if (m_lowestLinesToBeat == 0 && m_pSettings->topLines[i].lines > 0) {
+                m_lowestLinesToBeat = m_pSettings->topLines[i].lines;
+            }
+        }
+         */
+    }
+}
 
 //&---------------------------------------------------------------------*
 //&      Method  setTopScore
 //&---------------------------------------------------------------------*
 //
 //----------------------------------------------------------------------*
-void Points::setTopScore(const int id_topScore) {
-    m_topPoints = id_topScore;
-}
+//void Points::setTopScore(const int id_topScore) {
+  //  m_topPoints = id_topScore;
+//}
 
 //&---------------------------------------------------------------------*
 //&      Method  getTopScore
@@ -201,7 +226,7 @@ const std::string Points::getIntAsString(int id_int) {
 //
 //----------------------------------------------------------------------*
 void Points::addBlockPlaced() {
-    m_points += BLOCK_PLACED;
+    m_points += BLOCK_PLACED;// * (m_level + 1);
     m_blocks++;
     updateTopScore();
 }
@@ -243,7 +268,7 @@ void Points::addLinesCompleted(const int id_lines) {
 //
 //----------------------------------------------------------------------*
 void Points::addFastDrop() {
-    m_points += 2;
+    m_points += 3;// * (m_level + 1);
     updateTopScore();
 }
 
@@ -253,7 +278,7 @@ void Points::addFastDrop() {
 //
 //----------------------------------------------------------------------*
 void Points::addSlowDrop() {
-    m_points++;
+    m_points += 1;// * (m_level + 1);
     updateTopScore();
 }
 
@@ -275,6 +300,9 @@ void Points::updateTopScore() {
     if (m_points > m_topPoints) {
         m_topPoints = m_points;
     }
+    if (m_points > m_lowestPointsToBeat) {
+        m_lowestTopScoreBeaten = true;
+    }
 }
 
 //&---------------------------------------------------------------------*
@@ -285,6 +313,9 @@ void Points::updateTopScore() {
 void Points::updateTopLines() {
     if (m_lines > m_topLines) {
         m_topLines = m_lines;
+    }
+    if (m_lines > m_lowestLinesToBeat) {
+        m_lowestTopLinesBeaten = true;
     }
 }
 
@@ -309,6 +340,97 @@ const std::vector<GFXBean>* Points::getLevelBeans() {
     return &m_levelBeans;
 }
 
+//&---------------------------------------------------------------------*
+//&      Method  getLowestTopScoreBeaten
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+const bool Points::getLowestTopScoreBeaten() {
+    return m_lowestTopScoreBeaten;
+}
 
+//&---------------------------------------------------------------------*
+//&      Method  setTopLines
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+//void Points::setTopLines(const int id_topLines) {
+  //  m_topLines = id_topLines;
+//}
+
+//&---------------------------------------------------------------------*
+//&      Method  getTopLines
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+const int Points::getTopLines() {
+    return m_topLines;
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  getLowestTopLinesBeaten
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+const bool Points::getLowestTopLinesBeaten() {
+    return m_lowestTopLinesBeaten;
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  setSettings
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void Points::setSettings(FileAccess::Data* id_pSettings) {
+    m_pSettings = id_pSettings;
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  resortTopScores
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void Points::resortTopScores(const std::string id_name) {
+    if (m_lowestTopScoreBeaten) {
+        int i = 0;
+        // find index where the highest score is beaten
+        for (; i < FileAccess::MAX_TOP_SCORES; i++) {
+            if (m_pSettings->topScores[i].score < m_points) {
+                break;
+            }
+        }
+        if (i < FileAccess::MAX_TOP_SCORES) { // beaten score found..
+            // drop all scores from the one beaten and all below by one place
+            for (int j = FileAccess::MAX_TOP_SCORES - 1; j > i; j--) {
+                memcpy(&m_pSettings->topScores[j], &m_pSettings->topScores[j - 1], sizeof(FileAccess::TopScore));
+            }
+            // set new score with name
+            m_pSettings->topScores[i].score = m_points;
+            memset(&m_pSettings->topScores[i].name[0], 0, FileAccess::MAX_NAME_CHARS + 1);
+            memcpy(&m_pSettings->topScores[i].name[0], &id_name.c_str()[0], id_name.size() + 1);
+        }
+    }
+
+    if (m_lowestTopLinesBeaten) {
+        int i = 0;
+        // find index where the highest line is beaten
+        for (; i < FileAccess::MAX_TOP_SCORES; i++) {
+            if (m_pSettings->topLines[i].lines < m_lines) {
+                break;
+            }
+        }
+        if (i < FileAccess::MAX_TOP_SCORES) { // beaten lines found..
+            // drop all lines from the one beaten and all below by one place
+            for (int j = FileAccess::MAX_TOP_SCORES - 1; j > i; j--) {
+                memcpy(&m_pSettings->topLines[j], &m_pSettings->topLines[j - 1], sizeof(FileAccess::TopLines));
+            }
+            // set new score with name
+            m_pSettings->topLines[i].lines = m_lines;
+            memset(&m_pSettings->topLines[i].name[0], 0, FileAccess::MAX_NAME_CHARS + 1);
+            memcpy(&m_pSettings->topLines[i].name[0], &id_name.c_str()[0], id_name.size() + 1);
+        }
+    }
+
+}
 
 

@@ -42,7 +42,10 @@ class GFXFont : public sf::Drawable {
 // =============================
 // ======== P U B L I C ========
 public:
-        
+    
+    static const int CHAR_PIXEL_HEIGHT = 65;
+    static const int CHAR_PIXEL_WIDTH = 36;
+
     //&---------------------------------------------------------------------*
     //&      Constructor  GFXFont
     //&---------------------------------------------------------------------*
@@ -112,7 +115,21 @@ public:
     //
     //----------------------------------------------------------------------*
     const int getCharsOutputLength();
+    
+    //&---------------------------------------------------------------------*
+    //&      Method  setColor
+    //&---------------------------------------------------------------------*
+    //
+    //----------------------------------------------------------------------*
+    void setColor(const sf::Color id_color);
 
+    //&---------------------------------------------------------------------*
+    //&      Method  resetColor
+    //&---------------------------------------------------------------------*
+    //
+    //----------------------------------------------------------------------*
+    void resetColor();
+    
 // =============================
 // ======= P R I V A T E =======
 private:
@@ -149,18 +166,17 @@ private:
 
 	sf::RenderWindow* m_pWindow = NULL;
 
-    //const char* m_pStr = NULL;
     std::string m_string = "";
     int m_x = 0;
     int m_y = 0;
 
     int m_outputLength = 0;
 
+    sf::Color m_color = sf::Color::White;
+    
     static sf::Texture m_fontTexture;
     static bool m_loaded;
 
-    static const int CHAR_PIXEL_HEIGHT = 65;
-    static const int CHAR_PIXEL_WIDTH = 36;
     static const int CHARS_PER_ROW = 16;
     static const int CHARS_PER_COLUMN = 16;
     static const int SPACING = 4;

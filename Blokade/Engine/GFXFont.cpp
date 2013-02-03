@@ -111,6 +111,10 @@ void GFXFont::drawByteAtPos(const unsigned char id_byte, const int id_x, const i
     
     fontSprite.setPosition(id_x, id_y);
     
+    if (fontSprite.getColor() != m_color) {
+        fontSprite.setColor(m_color);
+    }
+    
     if (m_pWindow == NULL) {
         id_rTarget.draw(fontSprite, id_states);
     }
@@ -258,5 +262,22 @@ void GFXFont::draw(sf::RenderTarget& id_rTarget, sf::RenderStates id_states) con
     }
 }
 
+//&---------------------------------------------------------------------*
+//&      Method  setColor
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void GFXFont::setColor(const sf::Color id_color) {
+    m_color = id_color;
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  resetColor
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void GFXFont::resetColor() {
+    m_color = sf::Color::White;
+}
 
 

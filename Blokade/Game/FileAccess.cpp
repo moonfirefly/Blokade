@@ -40,6 +40,13 @@ FileAccess::Data* FileAccess::readData() {
             if (file.bad()) {
                 reset();
             }
+            else {
+                if (m_readData.headerOne != HEADER_ONE ||
+                        m_readData.headerTwo != HEADER_TWO) {
+                    // wrong file header, disregard its contents
+                    reset();
+                }
+            }
             file.close();
         }
     }
@@ -105,6 +112,8 @@ bool FileAccess::writeData(Data* id_pData) {
     if (filePath != "") {
         std::ofstream file (filePath.c_str(), std::ios::binary);
         if (file.is_open()) {
+            id_pData->headerOne = HEADER_ONE;
+            id_pData->headerTwo = HEADER_TWO;
             file.write((char*)id_pData, sizeof(*id_pData));
             if (!file.bad()) {
                 result = true;
@@ -121,7 +130,44 @@ bool FileAccess::writeData(Data* id_pData) {
 //
 //----------------------------------------------------------------------*
 void FileAccess::reset() {
-    m_readData.m_highScore = 0;
-    m_readData.m_musicVolume = 5; // max volume
-    m_readData.m_soundVolume = 5;
+    m_readData.headerOne = 0;
+    m_readData.headerTwo = 0;
+    m_readData.musicVolume = 5; // max volume
+    m_readData.soundVolume = 5;
+    
+    std::string scoreName = "";
+    std::string linesName = "";
+    
+    for (int i = 0; i < MAX_TOP_SCORES; i++) {
+        memset(&m_readData.topLines[i].name[0], 0, MAX_NAME_CHARS + 1);
+        memset(&m_readData.topScores[i].name[0], 0, MAX_NAME_CHARS + 1);
+        switch (i) {
+            case 0:
+                scoreName = "Rob";
+                linesName = "Marcy";
+                break;
+            case 1:
+                scoreName = "Marcy";
+                linesName = "Rob";
+                break;
+            case 2:
+                scoreName = "Fred";
+                linesName = "Sonya";
+                break;
+            case 3:
+                scoreName = "Paul";
+                linesName = "Paul";
+                break;
+            case 4:
+                scoreName = "Sonya";
+                linesName = "Fred";
+                break;
+            default:
+                break;
+        }
+        memcpy(&m_readData.topLines[i].name[0], &linesName.c_str()[0], linesName.size() + 1);
+        memcpy(&m_readData.topScores[i].name[0], &scoreName.c_str()[0], scoreName.size() + 1);
+        m_readData.topLines[i].lines = ((MAX_TOP_SCORES - i)) * 5;
+        m_readData.topScores[i].score = ((MAX_TOP_SCORES - i)) * 50;
+    }
 }

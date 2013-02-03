@@ -36,6 +36,34 @@ GFXRuntime::GFXRuntime(sf::RenderWindow& id_rWindow) {
 }
 
 //&---------------------------------------------------------------------*
+//&      Method  reset
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void GFXRuntime::reset() {
+    m_charTyped = 0;
+    m_keyPressed = sf::Keyboard::Key::KeyCount;
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  setCharTyped
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void GFXRuntime::setCharTyped(const sf::Uint32 id_ascii) {
+    m_charTyped = (id_ascii >= 32 && id_ascii < 128) ? id_ascii : 0;
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  getCharTyped
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+const char GFXRuntime::getCharTyped() {
+    return static_cast<char>(m_charTyped);
+}
+
+//&---------------------------------------------------------------------*
 //&      Method  updateTime
 //&---------------------------------------------------------------------*
 //
@@ -64,12 +92,12 @@ void GFXRuntime::update() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         m_tmpKeys.push_back(KEY::RIGHT);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+/*    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
         m_tmpKeys.push_back(KEY::RETURN);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
         m_tmpKeys.push_back(KEY::ESCAPE);
-    }
+    }*/
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         m_tmpKeys.push_back(KEY::SPACE);
     }
@@ -121,4 +149,32 @@ bool GFXRuntime::isKeyPressed(const KEY id_key) {
 bool GFXRuntime::isKeyDown(const KEY id_key) {
     return m_keys[id_key][STATE::IS_DOWN];
 }
+
+//&---------------------------------------------------------------------*
+//&      Method  setKeyPressed
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+void GFXRuntime::setKeyPressed(const sf::Keyboard::Key id_key) {
+    m_keyPressed = id_key;
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  getKeyPressed
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+const sf::Keyboard::Key GFXRuntime::getKeyPressed() {
+    return m_keyPressed;
+}
+
+//&---------------------------------------------------------------------*
+//&      Method  isKeyPressed
+//&---------------------------------------------------------------------*
+//
+//----------------------------------------------------------------------*
+bool GFXRuntime::isKeyPressed() {
+    return (m_keyPressed != sf::Keyboard::Key::KeyCount) ? true : false;
+}
+
 

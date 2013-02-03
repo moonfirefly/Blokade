@@ -73,6 +73,7 @@ public:
     static const std::string LINES;
     static const std::string TOP;
     static const std::string SCORE;
+    static const std::string SCORES;
     static const std::string NEXT;
     static const std::string PAUSE;
     static const std::string GAME_OVER;
@@ -80,6 +81,10 @@ public:
     static const std::string RESUME;
     static const std::string RESTART;
     static const std::string MUTED;
+    static const std::string NAME;
+    static const std::string NEW_SCORE;
+    static const std::string TOP_SCORES;
+    static const std::string TOP_LINES;
     
 };
 

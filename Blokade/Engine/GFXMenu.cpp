@@ -32,7 +32,8 @@
 //----------------------------------------------------------------------*
 void GFXMenu::addItem(GFXMenuItem* id_pItem) {
     m_items.push_back(id_pItem);
-    if (id_pItem->getType() == GFXMenuItem::TYPE::VALUE_SELECTOR) {
+    if (id_pItem->getType() == GFXMenuItem::TYPE::VALUE_SELECTOR ||
+            id_pItem->getType() == GFXMenuItem::TYPE::INPUT) {
         m_includesSelector = true;
     }
     // Select first item added to the menu (default selection)
@@ -211,25 +212,25 @@ void GFXMenu::update(GFXRuntime* id_pRuntime) {
     m_newSelectedBean = NULL;
 
     if (m_selectedItemIndex >= 0) {
-        if (id_pRuntime->isKeyPressed(GFXRuntime::KEY::DOWN)) {
+        if (id_pRuntime->getKeyPressed() == sf::Keyboard::Key::Down) {
             if (m_selectedItemIndex < static_cast<int>((m_items.size() - 1))) {
                 selectItemByIndex(m_selectedItemIndex + 1);
             }
         }
-        else if (id_pRuntime->isKeyPressed(GFXRuntime::KEY::UP)) {
+        else if (id_pRuntime->getKeyPressed() == sf::Keyboard::Key::Up) {
             if (m_selectedItemIndex > 0) {
                 selectItemByIndex(m_selectedItemIndex - 1);
             }
         }
-        else if (id_pRuntime->isKeyPressed(GFXRuntime::KEY::LEFT)) {
+        else if (id_pRuntime->getKeyPressed() == sf::Keyboard::Key::Left) {
             ((GFXMenuItem*) m_items.at(m_selectedItemIndex))->selectPreviousValue();
             identifyNewSelection();
         }
-        else if (id_pRuntime->isKeyPressed(GFXRuntime::KEY::RIGHT)) {
+        else if (id_pRuntime->getKeyPressed() == sf::Keyboard::Key::Right) {
             ((GFXMenuItem*) m_items.at(m_selectedItemIndex))->selectNextValue();
             identifyNewSelection();
         }
-        else if (id_pRuntime->isKeyPressed(GFXRuntime::KEY::RETURN)) {
+        else if (id_pRuntime->getKeyPressed() == sf::Keyboard::Key::Return) {
             m_pressedItemIndex = m_selectedItemIndex;
         }
     }

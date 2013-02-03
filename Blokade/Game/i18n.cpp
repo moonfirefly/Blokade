@@ -45,6 +45,7 @@ const std::string i18n::LEVEL = "Niveau";
 const std::string i18n::LINES = "Lignes";
 const std::string i18n::TOP = "Record";
 const std::string i18n::SCORE = "Points";
+const std::string i18n::SCORES = "Records";
 const std::string i18n::NEXT = "Suivant";
 const std::string i18n::PAUSE = "*Pause*";
 const std::string i18n::GAME_OVER = "TERMIN" + i18n::ASCII_UEACUTE;
@@ -52,6 +53,10 @@ const std::string i18n::QUIT = "Quitter";
 const std::string i18n::RESUME = "Continuer";
 const std::string i18n::RESTART = "Rejouer";
 const std::string i18n::MUTED = "silence";
+const std::string i18n::NAME = "Nom";
+const std::string i18n::NEW_SCORE = "Nouveau record!";
+const std::string i18n::TOP_SCORES = "* Top points *";
+const std::string i18n::TOP_LINES = "* Top lignes *";
 #else
 const std::string i18n::START = "Start";
 const std::string i18n::OPTIONS = "Options";
@@ -63,6 +68,7 @@ const std::string i18n::LEVEL = "Level";
 const std::string i18n::LINES = "Lines";
 const std::string i18n::TOP = "Top";
 const std::string i18n::SCORE = "Score";
+const std::string i18n::SCORES = "Scores";
 const std::string i18n::NEXT = "Next";
 const std::string i18n::PAUSE = "*Pause*";
 const std::string i18n::GAME_OVER = "GAME OVER";
@@ -70,6 +76,10 @@ const std::string i18n::QUIT = "Quit";
 const std::string i18n::RESUME = "Resume";
 const std::string i18n::RESTART = "Restart";
 const std::string i18n::MUTED = "muted";
+const std::string i18n::NAME = "Name";
+const std::string i18n::NEW_SCORE = "New record!";
+const std::string i18n::TOP_SCORES = "* Top Scores *";
+const std::string i18n::TOP_LINES = "* Top Lines *";
 #endif
 
 

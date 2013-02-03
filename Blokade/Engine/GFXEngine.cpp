@@ -62,16 +62,24 @@ bool GFXEngine::run() {
     }
     
     while(m_pWindow->isOpen()) {
-        m_runtime.update();
+        m_runtime.reset();
+        
         while(m_pWindow->pollEvent(event)){
             switch (event.type) {
                 case sf::Event::Closed:
                     shutdown();
                     break;
+                case sf::Event::TextEntered:
+                    m_runtime.setCharTyped(event.text.unicode);
+                    break;
+                case sf::Event::KeyPressed:
+                    m_runtime.setKeyPressed(event.key.code);
+                    break;
                 default:
                     break;
             }
         }
+        m_runtime.update();
         input();
         update();
         render();

@@ -40,6 +40,7 @@
 #include "../ResourcePath.hpp"
 #include "i18n.hpp"
 #include "FileAccess.hpp"
+#include "GFXMenuInput.hpp"
 
 //&=========================================================================*
 //&      Class  game
@@ -63,7 +64,9 @@ public:
         REMOVING_LINES,
         DEAD,
         OPTIONS_MENU,
-        LEVEL_MENU
+        SCORES_MENU,
+        LEVEL_MENU,
+        NEW_SCORE_MENU
     };
 
     enum BLOCK_TYPE {
@@ -335,6 +338,13 @@ private:
     void renderLevelsMenu();
 
     //&---------------------------------------------------------------------*
+    //&      Method  updateNewScoreMenu
+    //&---------------------------------------------------------------------*
+    //
+    //----------------------------------------------------------------------*
+    void updateNewScoreMenu();
+
+    //&---------------------------------------------------------------------*
     //&      Method  renderGame
     //&---------------------------------------------------------------------*
     //
@@ -361,6 +371,20 @@ private:
     //
     //----------------------------------------------------------------------*
     void saveSettings(const bool id_saveTopScore);
+
+    //&---------------------------------------------------------------------*
+    //&      Method  updateHighScoresMenu
+    //&---------------------------------------------------------------------*
+    //
+    //----------------------------------------------------------------------*
+    void updateHighScoresMenu();
+
+    //&---------------------------------------------------------------------*
+    //&      Method  renderHighScoresMenu
+    //&---------------------------------------------------------------------*
+    //
+    //----------------------------------------------------------------------*
+    void renderHighScoresMenu();
 
     static const int GRID_WIDTH = 10;
     static const int GRID_HEIGHT = 20;
@@ -389,12 +413,14 @@ private:
         MUSIC,
         BACK,
         LEVEL,
-        QUIT
+        QUIT,
+        NAME
     };
 
     GFXMenu m_mainMenu;
     GFXMenuButton m_mainMenuStart;
     GFXMenuButton m_mainMenuOptions;
+    GFXMenuButton m_mainMenuScores;
     GFXMenuButton m_mainMenuExit;
 
     GFXMenu m_optionsMenu;
@@ -415,7 +441,12 @@ private:
     GFXMenu m_gameMenuOver;
     GFXMenuButton m_gameMenuOverRestart;
     GFXMenuButton m_gameMenuOverQuit;
+    
+    GFXMenu m_gameMenuNewScore;
+    GFXMenuInput m_gameMenuNewScoreInput;
 
+    GFXMenu m_scoresMenu;
+    GFXMenuButton m_scoresMenuBack;
 
     GFXFont m_font;
 
