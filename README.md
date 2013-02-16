@@ -48,7 +48,11 @@ OSX
     Requires to install Quartz (OSX 10.6 and later):
     <a href="http://xquartz.macosforge.org/">http://xquartz.macosforge.org/</a>
 
-    and SFML 2.0 libraries for Mac OSX (use the installer): 
+    Use the Blokade OSX installer for easy and fast install of 
+    the game along with the SFML2 framework.
+    
+    Otherwise, if you download the zip then you have to 
+    install SFML 2.0 libraries for Mac OSX (use the installer): 
     <a href="http://www.sfml-dev.org/download.php">http://www.sfml-dev.org/download.php</a>
     
     You probably need OSX 10.8.2 to run it as well.
