@@ -37,7 +37,7 @@ See the game running <a href="https://vimeo.com/57818102">here</a>.
 Binaries
 --------
 
-<a href="https://www.dropbox.com/sh/xsywbqqtoe223zd/Z2tWZZ1g_-">Download</a> and play the pre-compiled game on <a href="https://www.dropbox.com/s/hltybb6ur552hfu/Blokade_0.9.3_OSX_En_Installer.pkg">OSX</a> or <a href="https://www.dropbox.com/s/edy9gpticrk9orj/Blokade_0.9.3_Windows_En.zip">Windows</a>.
+<a href="https://www.dropbox.com/sh/xsywbqqtoe223zd/Z2tWZZ1g_-">Download</a> and play the pre-compiled game on <a href="https://www.dropbox.com/s/hltybb6ur552hfu/Blokade_0.9.3_OSX_En_Installer.pkg">OSX</a> or <a href="https://www.dropbox.com/s/heelcbfyz9baz7l/Blokade_0.9.3_Windows_En_Installer.msi">Windows</a>.
 Aussi disponible en français.
 
 Requirements
