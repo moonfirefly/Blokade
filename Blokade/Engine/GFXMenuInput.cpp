@@ -129,7 +129,7 @@ void GFXMenuInput::update(GFXRuntime* id_pRuntime) {
     }
     else {
         if (id_pRuntime->getKeyPressed() == sf::Keyboard::Key::Delete ||
-            id_pRuntime->getKeyPressed() == sf::Keyboard::Key::Back) {
+            id_pRuntime->getKeyPressed() == sf::Keyboard::Key::BackSpace) {
             if (m_input.size() > 0) {
                 setInputValue(m_input.substr(0, m_input.size() - 1));
             }
